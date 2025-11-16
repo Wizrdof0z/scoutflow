@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 241 250 238;
+    --foreground: 29 53 87;
+    --card: 0 0% 100%;
+    --card-foreground: 29 53 87;
+    --primary: 29 53 87;
+    --primary-foreground: 241 250 238;
+    --accent: 168 218 220;
+    --accent-foreground: 29 53 87;
+    --muted: 232 244 245;
+    --muted-foreground: 90 122 140;
+    --border: 168 218 220;
+    --input: 168 218 220;
+    --ring: 29 53 87;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold;
+    letter-spacing: -0.01em;
+  }
+
+  h1 {
+    @apply text-4xl mb-6;
+    line-height: 1.2;
+  }
+
+  h2 {
+    @apply text-3xl mb-5;
+    line-height: 1.3;
+  }
+
+  h3 {
+    @apply text-2xl mb-4;
+    line-height: 1.4;
+  }
+}
+
+@layer utilities {
+  .transition-calm {
+    transition-duration: 225ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift {
+    @apply transition-calm hover:shadow-lg hover:-translate-y-0.5;
+  }
+
+  .grid-8pt {
+    gap: 0.5rem;
+  }
+}
