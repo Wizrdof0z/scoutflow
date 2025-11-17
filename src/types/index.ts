@@ -221,7 +221,7 @@ export interface User {
 // Permission helpers
 export const UserPermissions = {
   canAddPlayers: (role: UserRole) => role !== 'viewer',
-  canDeletePlayers: (role: UserRole) => role === 'admin',
+  canDeletePlayers: (role: UserRole) => role === 'admin' || role === 'datascout',
   canEditPlayerInfo: (role: UserRole) => role !== 'viewer',
   canChangePlayerList: (role: UserRole) => role !== 'viewer',
   

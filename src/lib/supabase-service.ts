@@ -123,6 +123,7 @@ export async function updatePlayer(playerID: string, updates: Partial<Player>): 
       position_profile: updates.positionProfile,
       data_available: updates.dataAvailable,
       current_list: updates.currentList,
+      date_of_birth: updates.dateOfBirth,
     })
     .eq('player_id', playerID)
 

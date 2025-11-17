@@ -59,6 +59,7 @@ export default function PlayerProfilePage() {
   const [editedPlayerInfo, setEditedPlayerInfo] = useState({
     currentTeam: player?.currentTeam || '',
     currentLeague: player?.currentLeague || '',
+    dateOfBirth: player?.dateOfBirth || '',
     nationality: player?.nationality || '',
     foot: player?.foot || 'Right' as 'Left' | 'Right' | 'Both',
     matchesPlayed: player?.matchesPlayed || 0,
@@ -360,6 +361,7 @@ export default function PlayerProfilePage() {
         contractEndDate: editedPlayerInfo.contractEndDate,
         positionProfile: editedPlayerInfo.positionProfile as PositionProfile | undefined,
         currentList: editedPlayerInfo.currentList,
+        dateOfBirth: editedPlayerInfo.dateOfBirth,
       })
 
       // Reload players to get updated info
@@ -384,6 +386,7 @@ export default function PlayerProfilePage() {
       contractEndDate: player?.contractEndDate || '',
       positionProfile: player?.positionProfile || '',
       currentList: player?.currentList || 'Prospects',
+      dateOfBirth: player?.dateOfBirth || '',
     })
     setIsEditingPlayerInfo(false)
   }
@@ -788,6 +791,16 @@ export default function PlayerProfilePage() {
                   id="editCurrentLeague"
                   value={editedPlayerInfo.currentLeague}
                   onChange={(e) => setEditedPlayerInfo({ ...editedPlayerInfo, currentLeague: e.target.value })}
+                />
+              </div>
+              
+              <div className="space-y-2">
+                <Label htmlFor="editDateOfBirth">Date of Birth</Label>
+                <Input
+                  id="editDateOfBirth"
+                  type="date"
+                  value={editedPlayerInfo.dateOfBirth}
+                  onChange={(e) => setEditedPlayerInfo({ ...editedPlayerInfo, dateOfBirth: e.target.value })}
                 />
               </div>
               

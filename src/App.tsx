@@ -6,6 +6,7 @@ import PlayerProfilePage from './pages/PlayerProfilePage'
 import PlayerListPage from './pages/PlayerListPage'
 import VerdictListPage from './pages/VerdictListPage'
 import TotalOverviewPage from './pages/TotalOverviewPage'
+import PlayerComparisonPage from './pages/PlayerComparisonPage'
 import LoginPage from './pages/LoginPage'
 import { useAuthStore } from './store'
 
@@ -32,6 +33,7 @@ function App() {
           <Route path="list/:category" element={<PlayerListPage />} />
           <Route path="verdict/:type/:verdict" element={<VerdictListPage />} />
           <Route path="total-overview" element={<TotalOverviewPage />} />
+          <Route path="player-comparison" element={<PlayerComparisonPage />} />
         </Route>
       </Routes>
     </Router>

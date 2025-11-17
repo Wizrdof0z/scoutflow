@@ -1,5 +1,5 @@
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
-import { Home, Database, Users, LogOut, UserPlus, Search } from 'lucide-react'
+import { Home, Database, Users, LogOut, UserPlus, Search, BarChart3 } from 'lucide-react'
 import { useState } from 'react'
 import { useAuthStore } from '@/store'
 import { useAppStore } from '@/store'
@@ -31,6 +31,7 @@ export default function Layout() {
   const navItems = [
     { path: '/', label: 'Dashboard', icon: Home },
     { path: '/total-overview', label: 'Total Overview', icon: Database },
+    { path: '/player-comparison', label: 'Player Comparison', icon: BarChart3 },
   ]
 
   return (
