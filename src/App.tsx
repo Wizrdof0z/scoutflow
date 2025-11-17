@@ -6,6 +6,7 @@ import PlayerProfilePage from './pages/PlayerProfilePage'
 import PlayerListPage from './pages/PlayerListPage'
 import VerdictListPage from './pages/VerdictListPage'
 import TotalOverviewPage from './pages/TotalOverviewPage'
+import LoginPage from './pages/LoginPage'
 import { useAuthStore } from './store'
 
 function App() {
@@ -13,12 +14,11 @@ function App() {
 
   if (!isAuthenticated) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
-        <div className="text-center">
-          <h1 className="text-4xl font-semibold mb-4">ScoutFlow</h1>
-          <p className="text-muted-foreground">Loading...</p>
-        </div>
-      </div>
+      <Router>
+        <Routes>
+          <Route path="*" element={<LoginPage />} />
+        </Routes>
+      </Router>
     )
   }
 

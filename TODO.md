@@ -2,47 +2,65 @@
 
 ## Priority Fixes
 
-### 1. Fix Saving Player Ratings
-**Issue:** Players ratings cannot be saved - error is occurring when trying to save ratings
-**Impact:** Critical - blocks core data scouting functionality
-**Location:** PlayerProfilePage.tsx - handleSaveRatings function
-**Investigation needed:**
-- Check console error messages
-- Verify Supabase player_ratings table schema
-- Check if rated_by field expects UUID vs TEXT
-- Verify rating value constraints (should be 0-100 floats)
+### 1. ✅ FIXED - Saving Player Ratings with Data Verdicts
+**Issue:** Database constraint error when saving "Average" or "Bad" data verdicts
+**Status:** FIXED - Code improvements made, database constraint needs to be updated
+**Solution:** 
+- Enhanced error handling to show actual Supabase errors
+- Improved all save functions (ratings, videoscouting, live scouting)
+- Created SQL migration to fix data_verdict constraint: `fix-data-verdict-constraint.sql`
+**Action Required:** Run the SQL migration in Supabase SQL Editor:
+  - Option 1 (Quick): Run `fix-data-verdict-constraint.sql`
+  - Option 2 (Complete): Run `00-complete-schema-setup.sql` for full database setup
 
-### 2. Data Verdict Badge Color Coding
+### 2. ✅ FIXED - Data Verdict Badge Color Coding
 **Issue:** "Average" data verdict should show orange in the upper right corner badge, but isn't displaying correctly
-**Current behavior:** "Good" verdict correctly shows green
+**Status:** FIXED - Working correctly now
 **Expected behavior:** 
-- Good → Green badge
-- Average → Orange badge  
-- Bad → Red badge
-**Location:** PlayerProfilePage.tsx - badge rendering section (around line 430-450)
-**Fix:** Check the variant prop mapping for dataVerdict badges
+- Good → Green badge ✓
+- Average → Orange badge ✓
+- Bad → Red badge ✓
 
 ## Feature Updates
 
-### 3. Adjust Available Positions
-**Current positions:** Goalkeeper, Centre-Back, Full-Back, Defensive Midfielder, Central Midfielder, Attacking Midfielder, Winger, Striker
-
-**New positions required:**
-- Centre Back (note: no hyphen)
+### 3. ✅ COMPLETED - Adjust Available Positions
+**New positions implemented:**
+- Goalkeeper
+- Centre Back (no hyphen)
 - Left Fullback
 - Right Fullback  
 - Defensive Midfielder
 - Central Midfielder
 - Attacking Midfielder
-- Right Winger
 - Left Winger
+- Right Winger
 - Centre Forward
 
-**Files to update:**
-- `src/types/index.ts` - PositionProfile type definition
-- `src/pages/PlayerEntryPage.tsx` - position dropdown options
-- `src/pages/TotalOverviewPage.tsx` - position filter options
-- Any other components referencing position options
+**Files updated:**
+- ✅ `src/types/index.ts` - PositionProfile type definition
+- ✅ `src/pages/PlayerEntryPage.tsx` - position dropdown options
+- ✅ `src/pages/TotalOverviewPage.tsx` - position filter options
+
+### 3b. ✅ COMPLETED - Edit Player Information
+**Feature:** Ability to edit player information after creation
+- Added "Edit Player Info" button on player profile page
+- Created edit form with all editable fields
+- Can update: team, league, nationality, foot, position, matches played, market value, contract end date, current list
+
+### 3c. ✅ COMPLETED - Position Subprofiles
+**Feature:** Choose subprofile for player's position in Data Summary section
+- Centre Back → Technical Centre Back / Physical Centre Back
+- Left/Right Fullback → Technical Fullback / Intense Fullback
+- Defensive/Central/Attacking Midfielder → Pivot / Box-to-Box
+- Left/Right Winger → Inverted Winger / Traditional Winger
+- Centre Forward → Second Striker / Direct Striker
+
+**Implementation:**
+- Added SubProfile type to types
+- Added sub_profile field to DataScoutingEntry
+- Selector appears between ratings and Data Verdict
+- Subprofile saved with data scouting entry
+- Database migration: `02-add-subprofile-column.sql`
 
 ### 4. Add Ratings-Based List Page
 **Feature:** New page showing players grouped by their metric ratings

@@ -166,25 +166,34 @@ export async function getPlayerRating(playerID: string, seasonID: string): Promi
 }
 
 export async function upsertPlayerRating(rating: Omit<PlayerRating, 'ratedAt'>): Promise<void> {
+  const payload = {
+    player_id: rating.playerID,
+    season_id: rating.seasonID,
+    overall_rating: rating.overall,
+    physical_rating: rating.physical,
+    movement_rating: rating.movement,
+    passing_rating: rating.passing,
+    pressure_rating: rating.pressure,
+    defensive_rating: rating.defensive,
+    rated_by: rating.ratedBy,
+    rated_at: new Date().toISOString(),
+  }
+  
+  console.log('Upserting player rating:', payload)
+  
   const { error } = await supabase
     .from('player_ratings')
-    .upsert({
-      player_id: rating.playerID,
-      season_id: rating.seasonID,
-      overall_rating: rating.overall,
-      physical_rating: rating.physical,
-      movement_rating: rating.movement,
-      passing_rating: rating.passing,
-      pressure_rating: rating.pressure,
-      defensive_rating: rating.defensive,
-      rated_by: rating.ratedBy,
-      rated_at: new Date().toISOString(), // Explicitly set timestamp
-    }, {
+    .upsert(payload, {
       onConflict: 'player_id,season_id'
     })
 
   if (error) {
-    console.error('Supabase upsert error:', error)
+    console.error('Supabase upsertPlayerRating error:', {
+      message: error.message,
+      details: error.details,
+      hint: error.hint,
+      code: error.code,
+    })
     throw error
   }
 }
@@ -307,6 +316,7 @@ export async function getDataScoutingEntry(playerID: string, seasonID: string): 
     playerID: data.player_id,
     seasonID: data.season_id,
     dataVerdict: data.data_verdict,
+    subProfile: data.sub_profile,
     datascoutID: data.datascout_id,
     datascoutedAt: data.datascouted_at,
     notes: data.notes,
@@ -314,20 +324,33 @@ export async function getDataScoutingEntry(playerID: string, seasonID: string): 
 }
 
 export async function upsertDataScoutingEntry(entry: DataScoutingEntry): Promise<void> {
+  const payload = {
+    player_id: entry.playerID,
+    season_id: entry.seasonID,
+    data_verdict: entry.dataVerdict || null,
+    sub_profile: entry.subProfile || null,
+    datascout_id: entry.datascoutID || null,
+    datascouted_at: entry.datascoutedAt || null,
+    notes: entry.notes || null,
+  }
+  
+  console.log('Upserting data scouting entry:', payload)
+  
   const { error } = await supabase
     .from('data_scouting_entries')
-    .upsert({
-      player_id: entry.playerID,
-      season_id: entry.seasonID,
-      data_verdict: entry.dataVerdict,
-      datascout_id: entry.datascoutID,
-      datascouted_at: entry.datascoutedAt,
-      notes: entry.notes,
-    }, {
+    .upsert(payload, {
       onConflict: 'player_id,season_id'
     })
 
-  if (error) throw error
+  if (error) {
+    console.error('Supabase upsertDataScoutingEntry error:', {
+      message: error.message,
+      details: error.details,
+      hint: error.hint,
+      code: error.code,
+    })
+    throw error
+  }
 }
 
 // Videoscouting
@@ -356,22 +379,34 @@ export async function getVideoscoutingEntry(playerID: string, seasonID: string):
 }
 
 export async function upsertVideoscoutingEntry(entry: VideoscoutingEntry): Promise<void> {
+  const payload = {
+    player_id: entry.playerID,
+    season_id: entry.seasonID,
+    kyle_verdict: entry.kyleVerdict || null,
+    kyle_videoscouted_at: entry.kyleVideoscoutedAt || null,
+    kyle_notes: entry.kyleNotes || null,
+    toer_verdict: entry.toerVerdict || null,
+    toer_videoscouted_at: entry.toerVideoscoutedAt || null,
+    toer_notes: entry.toerNotes || null,
+  }
+  
+  console.log('Upserting videoscouting entry:', payload)
+  
   const { error } = await supabase
     .from('videoscouting_entries')
-    .upsert({
-      player_id: entry.playerID,
-      season_id: entry.seasonID,
-      kyle_verdict: entry.kyleVerdict,
-      kyle_videoscouted_at: entry.kyleVideoscoutedAt,
-      kyle_notes: entry.kyleNotes,
-      toer_verdict: entry.toerVerdict,
-      toer_videoscouted_at: entry.toerVideoscoutedAt,
-      toer_notes: entry.toerNotes,
-    }, {
+    .upsert(payload, {
       onConflict: 'player_id,season_id'
     })
 
-  if (error) throw error
+  if (error) {
+    console.error('Supabase upsertVideoscoutingEntry error:', {
+      message: error.message,
+      details: error.details,
+      hint: error.hint,
+      code: error.code,
+    })
+    throw error
+  }
 }
 
 // Live Scouting
@@ -398,18 +433,162 @@ export async function getLiveScoutingEntry(playerID: string, seasonID: string): 
 }
 
 export async function upsertLiveScoutingEntry(entry: LiveScoutingEntry): Promise<void> {
+  const payload = {
+    player_id: entry.playerID,
+    season_id: entry.seasonID,
+    live_scouting_percentage: entry.liveScoutingPercentage || null,
+    livescout_id: entry.livescoutID || null,
+    livescouted_at: entry.livescoutedAt || null,
+    notes: entry.notes || null,
+  }
+  
+  console.log('Upserting live scouting entry:', payload)
+  
   const { error } = await supabase
     .from('live_scouting_entries')
-    .upsert({
-      player_id: entry.playerID,
-      season_id: entry.seasonID,
-      live_scouting_percentage: entry.liveScoutingPercentage,
-      livescout_id: entry.livescoutID,
-      livescouted_at: entry.livescoutedAt,
-      notes: entry.notes,
-    }, {
+    .upsert(payload, {
       onConflict: 'player_id,season_id'
     })
 
+  if (error) {
+    console.error('Supabase upsertLiveScoutingEntry error:', {
+      message: error.message,
+      details: error.details,
+      hint: error.hint,
+      code: error.code,
+    })
+    throw error
+  }
+}
+
+// Batch query functions for performance optimization
+export async function getAllPlayerRatings(seasonID: string): Promise<Map<string, PlayerRating>> {
+  const { data, error } = await supabase
+    .from('player_ratings')
+    .select('*')
+    .eq('season_id', seasonID)
+
   if (error) throw error
+
+  const ratingsMap = new Map<string, PlayerRating>()
+  
+  if (data) {
+    data.forEach(row => {
+      ratingsMap.set(row.player_id, {
+        playerID: row.player_id,
+        seasonID: row.season_id,
+        overall: row.overall_rating,
+        physical: row.physical,
+        movement: row.movement,
+        passing: row.passing,
+        pressure: row.pressure,
+        defensive: row.defensive,
+        ratedBy: row.rated_by,
+        ratedAt: row.rated_at,
+      })
+    })
+  }
+
+  return ratingsMap
+}
+
+export async function getAllDataScoutingEntries(seasonID: string): Promise<Map<string, DataScoutingEntry>> {
+  const { data, error } = await supabase
+    .from('data_scouting_entries')
+    .select('*')
+    .eq('season_id', seasonID)
+
+  if (error) throw error
+
+  const entriesMap = new Map<string, DataScoutingEntry>()
+  
+  if (data) {
+    data.forEach(row => {
+      entriesMap.set(row.player_id, {
+        playerID: row.player_id,
+        seasonID: row.season_id,
+        dataVerdict: row.data_verdict,
+        subProfile: row.sub_profile,
+        datascoutID: row.datascout_id,
+        datascoutedAt: row.datascouted_at,
+        notes: row.notes,
+      })
+    })
+  }
+
+  return entriesMap
+}
+
+export async function getAllVideoscoutingEntries(seasonID: string): Promise<Map<string, VideoscoutingEntry>> {
+  const { data, error } = await supabase
+    .from('videoscouting_entries')
+    .select('*')
+    .eq('season_id', seasonID)
+
+  if (error) throw error
+
+  const entriesMap = new Map<string, VideoscoutingEntry>()
+  
+  if (data) {
+    data.forEach(row => {
+      entriesMap.set(row.player_id, {
+        playerID: row.player_id,
+        seasonID: row.season_id,
+        kyleVerdict: row.kyle_verdict,
+        kyleVideoscoutedAt: row.kyle_videoscouted_at,
+        kyleNotes: row.kyle_notes,
+        toerVerdict: row.toer_verdict,
+        toerVideoscoutedAt: row.toer_videoscouted_at,
+        toerNotes: row.toer_notes,
+      })
+    })
+  }
+
+  return entriesMap
+}
+
+export async function getAllLiveScoutingEntries(seasonID: string): Promise<Map<string, LiveScoutingEntry>> {
+  const { data, error } = await supabase
+    .from('live_scouting_entries')
+    .select('*')
+    .eq('season_id', seasonID)
+
+  if (error) throw error
+
+  const entriesMap = new Map<string, LiveScoutingEntry>()
+  
+  if (data) {
+    data.forEach(row => {
+      entriesMap.set(row.player_id, {
+        playerID: row.player_id,
+        seasonID: row.season_id,
+        liveScoutingPercentage: row.live_scouting_percentage,
+        livescoutID: row.livescout_id,
+        livescoutedAt: row.livescouted_at,
+        notes: row.notes,
+      })
+    })
+  }
+
+  return entriesMap
+}
+
+export async function getAllPlayerReportCounts(seasonID: string): Promise<Map<string, number>> {
+  const { data, error } = await supabase
+    .from('reports')
+    .select('player_id')
+    .eq('season_id', seasonID)
+
+  if (error) throw error
+
+  const reportCounts = new Map<string, number>()
+  
+  if (data) {
+    data.forEach(row => {
+      const count = reportCounts.get(row.player_id) || 0
+      reportCounts.set(row.player_id, count + 1)
+    })
+  }
+
+  return reportCounts
 }

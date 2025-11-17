@@ -24,13 +24,13 @@ const MOCK_USER: User = {
 
 // Auth Store
 export const useAuthStore = create<AuthState>((set) => ({
-  user: MOCK_USER, // Auto-logged in for development
-  isAuthenticated: true,
+  user: null, // Start not logged in
+  isAuthenticated: false,
   
-  login: async (email: string, password: string) => {
-    // TODO: Implement real auth with Lovable Cloud
-    await new Promise(resolve => setTimeout(resolve, 500));
-    set({ user: MOCK_USER, isAuthenticated: true });
+  login: async (_email: string, _password: string) => {
+    // Authentication is handled in LoginPage
+    // This is just for updating state
+    await new Promise(resolve => setTimeout(resolve, 100));
   },
   
   logout: () => {

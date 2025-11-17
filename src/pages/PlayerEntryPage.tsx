@@ -163,13 +163,15 @@ export default function PlayerEntryPage() {
                   >
                     <option value="">Select position...</option>
                     <option value="Goalkeeper">Goalkeeper</option>
-                    <option value="Centre-Back">Centre-Back</option>
-                    <option value="Full-Back">Full-Back</option>
+                    <option value="Centre Back">Centre Back</option>
+                    <option value="Left Fullback">Left Fullback</option>
+                    <option value="Right Fullback">Right Fullback</option>
                     <option value="Defensive Midfielder">Defensive Midfielder</option>
                     <option value="Central Midfielder">Central Midfielder</option>
                     <option value="Attacking Midfielder">Attacking Midfielder</option>
-                    <option value="Winger">Winger</option>
-                    <option value="Striker">Striker</option>
+                    <option value="Left Winger">Left Winger</option>
+                    <option value="Right Winger">Right Winger</option>
+                    <option value="Centre Forward">Centre Forward</option>
                   </Select>
                 </div>
 
