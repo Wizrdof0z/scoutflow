@@ -34,6 +34,7 @@ export default function HomePage() {
   const user = useAuthStore((state) => state.user)
   const updatePlayer = useAppStore((state) => state.updatePlayer)
   const getVideoscoutingEntry = useAppStore((state) => state.getVideoscoutingEntry)
+  const getPlayerReports = useAppStore((state) => state.getPlayerReports)
   
   const [prospects, setProspects] = useState(0)
   const [datascouting, setDatascouting] = useState(0)
@@ -41,6 +42,14 @@ export default function HomePage() {
   const [livescouting, setLivescouting] = useState(0)
   const [potential, setPotential] = useState(0)
   const [notInteresting, setNotInteresting] = useState(0)
+  
+  // Videoscout-specific tiles
+  const [dataReportsCount, setDataReportsCount] = useState(0)
+  const [recentlyVideoscoutedCount, setRecentlyVideoscoutedCount] = useState(0)
+  
+  // Cache for videoscout-specific data
+  const [playersWithReports, setPlayersWithReports] = useState<Set<string>>(new Set())
+  const [recentlyVideoscoutedPlayers, setRecentlyVideoscoutedPlayers] = useState<Set<string>>(new Set())
   
   // Sidebar state
   const [selectedList, setSelectedList] = useState<string | null>(null)
@@ -70,33 +79,95 @@ export default function HomePage() {
     }
   }, [players])
   
+  // Count videoscout-specific tiles
+  useEffect(() => {
+    if (user?.role === 'videoscout' && players.length > 0) {
+      const currentSeason = getCurrentSeason()
+      
+      // Fetch all data in parallel for better performance
+      const fetchVideoscoutData = async () => {
+        const reportsSet = new Set<string>()
+        const videoscoutedSet = new Set<string>()
+        
+        // Use Promise.all to fetch data for all players in parallel
+        const results = await Promise.all(
+          players.map(async (player) => {
+            const [reports, videoEntry] = await Promise.all([
+              getPlayerReports(player.playerID, currentSeason.seasonID),
+              getVideoscoutingEntry(player.playerID, currentSeason.seasonID)
+            ])
+            
+            return {
+              playerID: player.playerID,
+              hasReports: reports && reports.length > 0,
+              hasMyVerdict: user.email === 'kyle' ? !!videoEntry?.kyleVerdict : 
+                           user.email === 'toer' ? !!videoEntry?.toerVerdict : false
+            }
+          })
+        )
+        
+        // Process results
+        results.forEach(result => {
+          if (result.hasReports) reportsSet.add(result.playerID)
+          if (result.hasMyVerdict) videoscoutedSet.add(result.playerID)
+        })
+        
+        // Update state
+        setPlayersWithReports(reportsSet)
+        setRecentlyVideoscoutedPlayers(videoscoutedSet)
+        setDataReportsCount(reportsSet.size)
+        setRecentlyVideoscoutedCount(videoscoutedSet.size)
+      }
+      
+      fetchVideoscoutData()
+    }
+  }, [players, user, getPlayerReports, getVideoscoutingEntry])
+  
   // Load videoscouting verdicts for relevant views
   useEffect(() => {
     if ((user?.role === 'datascout' || user?.role === 'videoscout') && players.length > 0) {
       const currentSeason = getCurrentSeason()
       const fetchVerdicts = async () => {
         const verdictMap = new Map()
-        const relevantPlayers = players.filter(p => p.currentList === 'Videoscouting list')
         
-        for (const player of relevantPlayers) {
-          try {
-            const [videoscoutEntry, datascoutEntry] = await Promise.all([
-              getVideoscoutingEntry(player.playerID, currentSeason.seasonID),
-              useAppStore.getState().getDataScoutingEntry(player.playerID, currentSeason.seasonID)
-            ])
-            verdictMap.set(player.playerID, {
-              kyleVerdict: videoscoutEntry?.kyleVerdict || null,
-              toerVerdict: videoscoutEntry?.toerVerdict || null,
-              dataVerdict: datascoutEntry?.dataVerdict || null
-            })
-          } catch (e) {
-            verdictMap.set(player.playerID, { 
-              kyleVerdict: null, 
-              toerVerdict: null,
-              dataVerdict: null 
-            })
-          }
-        }
+        // Load verdicts for ALL players for both videoscouts and datascouts
+        // This ensures verdicts show in all tile sidebars
+        const relevantPlayers = players
+        
+        // Fetch all verdicts in parallel for better performance
+        const results = await Promise.all(
+          relevantPlayers.map(async (player) => {
+            try {
+              const [videoscoutEntry, datascoutEntry] = await Promise.all([
+                getVideoscoutingEntry(player.playerID, currentSeason.seasonID),
+                useAppStore.getState().getDataScoutingEntry(player.playerID, currentSeason.seasonID)
+              ])
+              return {
+                playerID: player.playerID,
+                kyleVerdict: videoscoutEntry?.kyleVerdict || null,
+                toerVerdict: videoscoutEntry?.toerVerdict || null,
+                dataVerdict: datascoutEntry?.dataVerdict || null
+              }
+            } catch (e) {
+              return {
+                playerID: player.playerID,
+                kyleVerdict: null,
+                toerVerdict: null,
+                dataVerdict: null
+              }
+            }
+          })
+        )
+        
+        // Build the verdict map
+        results.forEach(result => {
+          verdictMap.set(result.playerID, {
+            kyleVerdict: result.kyleVerdict,
+            toerVerdict: result.toerVerdict,
+            dataVerdict: result.dataVerdict
+          })
+        })
+        
         setVideoscoutingData(verdictMap)
       }
       fetchVerdicts()
@@ -106,12 +177,23 @@ export default function HomePage() {
   // Filter players when a list is selected
   useEffect(() => {
     if (selectedList && players.length > 0) {
-      const filtered = players.filter(p => p.currentList === selectedList)
-      setFilteredPlayers(filtered)
+      if (selectedList === 'Data Reports') {
+        // Use cached data for instant filtering
+        const filtered = players.filter(p => playersWithReports.has(p.playerID))
+        setFilteredPlayers(filtered)
+      } else if (selectedList === 'Recently Videoscouted') {
+        // Use cached data for instant filtering
+        const filtered = players.filter(p => recentlyVideoscoutedPlayers.has(p.playerID))
+        setFilteredPlayers(filtered)
+      } else {
+        // Default list filtering
+        const filtered = players.filter(p => p.currentList === selectedList)
+        setFilteredPlayers(filtered)
+      }
     } else {
       setFilteredPlayers([])
     }
-  }, [selectedList, players])
+  }, [selectedList, players, playersWithReports, recentlyVideoscoutedPlayers])
   
   const handleTileClick = (listName: string) => {
     if (selectedList === listName) {
@@ -179,89 +261,136 @@ export default function HomePage() {
       <div className="flex gap-8">
         {/* Main Content */}
         <div className={`space-y-8 transition-all duration-300 ${selectedList ? 'w-2/3' : 'w-full'}`}>
-          {/* Quick Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card 
-              className={`hover:bg-accent/10 transition-calm hover-lift cursor-pointer ${selectedList === 'Prospects' ? 'ring-2 ring-primary' : ''}`}
-              onClick={() => handleTileClick('Prospects')}
-            >
-              <CardHeader>
-                <CardTitle className="text-lg">Prospects</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-4xl font-bold text-primary">{prospects}</div>
-                <p className="text-sm text-muted-foreground mt-2">New players to review</p>
-              </CardContent>
-            </Card>
+          {/* Quick Stats - Conditional rendering based on user role */}
+          {user?.role === 'videoscout' ? (
+            // Videoscout tiles: Data Reports, Videoscouting, Recently Videoscouted
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Card 
+                className={`hover:bg-accent/10 transition-calm hover-lift cursor-pointer ${selectedList === 'Data Reports' ? 'ring-2 ring-primary' : ''}`}
+                onClick={() => handleTileClick('Data Reports')}
+              >
+                <CardHeader>
+                  <CardTitle className="text-lg">Data Reports</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-4xl font-bold text-primary">{dataReportsCount}</div>
+                  <p className="text-sm text-muted-foreground mt-2">Players with data reports</p>
+                </CardContent>
+              </Card>
 
-            <Card 
-              className={`hover:bg-accent/10 transition-calm hover-lift cursor-pointer ${selectedList === 'Datascouting list' ? 'ring-2 ring-primary' : ''}`}
-              onClick={() => handleTileClick('Datascouting list')}
-            >
-              <CardHeader>
-                <CardTitle className="text-lg">Data Scouting</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-4xl font-bold text-accent-foreground">{datascouting}</div>
-                <p className="text-sm text-muted-foreground mt-2">For data analysis</p>
-              </CardContent>
-            </Card>
+              <Card 
+                className={`hover:bg-accent/10 transition-calm hover-lift cursor-pointer ${selectedList === 'Videoscouting list' ? 'ring-2 ring-primary' : ''}`}
+                onClick={() => handleTileClick('Videoscouting list')}
+              >
+                <CardHeader>
+                  <CardTitle className="text-lg">Video Scouting</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-4xl font-bold text-followup">{videoscouting}</div>
+                  <p className="text-sm text-muted-foreground mt-2">For video review</p>
+                </CardContent>
+              </Card>
 
-            <Card 
-              className={`hover:bg-accent/10 transition-calm hover-lift cursor-pointer ${selectedList === 'Videoscouting list' ? 'ring-2 ring-primary' : ''}`}
-              onClick={() => handleTileClick('Videoscouting list')}
-            >
-              <CardHeader>
-                <CardTitle className="text-lg">Video Scouting</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-4xl font-bold text-followup">{videoscouting}</div>
-                <p className="text-sm text-muted-foreground mt-2">For video review</p>
-              </CardContent>
-            </Card>
-          </div>
+              <Card 
+                className={`hover:bg-accent/10 transition-calm hover-lift cursor-pointer ${selectedList === 'Recently Videoscouted' ? 'ring-2 ring-primary' : ''}`}
+                onClick={() => handleTileClick('Recently Videoscouted')}
+              >
+                <CardHeader>
+                  <CardTitle className="text-lg">Recently Videoscouted</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="text-4xl font-bold text-discuss">{recentlyVideoscoutedCount}</div>
+                  <p className="text-sm text-muted-foreground mt-2">Your recent verdicts</p>
+                </CardContent>
+              </Card>
+            </div>
+          ) : (
+            // Default tiles for all other roles
+            <>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <Card 
+                  className={`hover:bg-accent/10 transition-calm hover-lift cursor-pointer ${selectedList === 'Prospects' ? 'ring-2 ring-primary' : ''}`}
+                  onClick={() => handleTileClick('Prospects')}
+                >
+                  <CardHeader>
+                    <CardTitle className="text-lg">Prospects</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-4xl font-bold text-primary">{prospects}</div>
+                    <p className="text-sm text-muted-foreground mt-2">New players to review</p>
+                  </CardContent>
+                </Card>
 
-          {/* Additional Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <Card 
-              className={`hover:bg-accent/10 transition-calm hover-lift cursor-pointer ${selectedList === 'Live scouting list' ? 'ring-2 ring-primary' : ''}`}
-              onClick={() => handleTileClick('Live scouting list')}
-            >
-              <CardHeader>
-                <CardTitle className="text-lg">Live Scouting</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-4xl font-bold text-monitoring">{livescouting}</div>
-                <p className="text-sm text-muted-foreground mt-2">To watch live</p>
-              </CardContent>
-            </Card>
+                <Card 
+                  className={`hover:bg-accent/10 transition-calm hover-lift cursor-pointer ${selectedList === 'Datascouting list' ? 'ring-2 ring-primary' : ''}`}
+                  onClick={() => handleTileClick('Datascouting list')}
+                >
+                  <CardHeader>
+                    <CardTitle className="text-lg">Data Scouting</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-4xl font-bold text-accent-foreground">{datascouting}</div>
+                    <p className="text-sm text-muted-foreground mt-2">For data analysis</p>
+                  </CardContent>
+                </Card>
 
-            <Card 
-              className={`hover:bg-accent/10 transition-calm hover-lift cursor-pointer ${selectedList === 'Potential list' ? 'ring-2 ring-primary' : ''}`}
-              onClick={() => handleTileClick('Potential list')}
-            >
-              <CardHeader>
-                <CardTitle className="text-lg">Potential</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-4xl font-bold text-discuss">{potential}</div>
-                <p className="text-sm text-muted-foreground mt-2">High potential players</p>
-              </CardContent>
-            </Card>
+                <Card 
+                  className={`hover:bg-accent/10 transition-calm hover-lift cursor-pointer ${selectedList === 'Videoscouting list' ? 'ring-2 ring-primary' : ''}`}
+                  onClick={() => handleTileClick('Videoscouting list')}
+                >
+                  <CardHeader>
+                    <CardTitle className="text-lg">Video Scouting</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-4xl font-bold text-followup">{videoscouting}</div>
+                    <p className="text-sm text-muted-foreground mt-2">For video review</p>
+                  </CardContent>
+                </Card>
+              </div>
 
-            <Card 
-              className={`hover:bg-accent/10 transition-calm hover-lift cursor-pointer ${selectedList === 'Not interesting list' ? 'ring-2 ring-primary' : ''}`}
-              onClick={() => handleTileClick('Not interesting list')}
-            >
-              <CardHeader>
-                <CardTitle className="text-lg">Not Interesting</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-4xl font-bold text-notgood">{notInteresting}</div>
-                <p className="text-sm text-muted-foreground mt-2">Archived players</p>
-              </CardContent>
-            </Card>
-          </div>
+              {/* Additional Stats */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <Card 
+                  className={`hover:bg-accent/10 transition-calm hover-lift cursor-pointer ${selectedList === 'Live scouting list' ? 'ring-2 ring-primary' : ''}`}
+                  onClick={() => handleTileClick('Live scouting list')}
+                >
+                  <CardHeader>
+                    <CardTitle className="text-lg">Live Scouting</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-4xl font-bold text-monitoring">{livescouting}</div>
+                    <p className="text-sm text-muted-foreground mt-2">To watch live</p>
+                  </CardContent>
+                </Card>
+
+                <Card 
+                  className={`hover:bg-accent/10 transition-calm hover-lift cursor-pointer ${selectedList === 'Potential list' ? 'ring-2 ring-primary' : ''}`}
+                  onClick={() => handleTileClick('Potential list')}
+                >
+                  <CardHeader>
+                    <CardTitle className="text-lg">Potential</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-4xl font-bold text-discuss">{potential}</div>
+                    <p className="text-sm text-muted-foreground mt-2">High potential players</p>
+                  </CardContent>
+                </Card>
+
+                <Card 
+                  className={`hover:bg-accent/10 transition-calm hover-lift cursor-pointer ${selectedList === 'Not interesting list' ? 'ring-2 ring-primary' : ''}`}
+                  onClick={() => handleTileClick('Not interesting list')}
+                >
+                  <CardHeader>
+                    <CardTitle className="text-lg">Not Interesting</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="text-4xl font-bold text-notgood">{notInteresting}</div>
+                    <p className="text-sm text-muted-foreground mt-2">Archived players</p>
+                  </CardContent>
+                </Card>
+              </div>
+            </>
+          )}
 
           {/* Role-Specific Content */}
           
@@ -698,7 +827,7 @@ export default function HomePage() {
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <div className="max-h-[70vh] overflow-y-auto space-y-3">
+                  <div className="max-h-[70vh] overflow-y-auto space-y-2">
                     {filteredPlayers.length === 0 ? (
                       <p className="text-sm text-muted-foreground text-center py-8">
                         No players in this list yet
@@ -706,8 +835,16 @@ export default function HomePage() {
                     ) : (
                       filteredPlayers.map((player) => {
                         const age = player.dateOfBirth 
-                          ? new Date().getFullYear() - new Date(player.dateOfBirth).getFullYear()
+                          ? calculateAge(player.dateOfBirth)
                           : null
+                        
+                        // Get verdict for videoscout users
+                        const verdicts = videoscoutingData.get(player.playerID)
+                        const myVerdict = user?.email === 'kyle' ? verdicts?.kyleVerdict : 
+                                         user?.email === 'toer' ? verdicts?.toerVerdict : null
+                        
+                        // Get data verdict for datascout users
+                        const dataVerdict = verdicts?.dataVerdict
                         
                         return (
                           <Link
@@ -715,45 +852,48 @@ export default function HomePage() {
                             to={`/player/${player.playerID}`}
                             className="block"
                           >
-                            <div className="p-4 rounded-lg border border-border hover:bg-accent/10 transition-calm hover-lift">
-                              {/* Name and Age */}
-                              <div className="font-medium text-base mb-2">
-                                {player.name} {age && `(${age})`}
+                            <div className="px-3 py-2 rounded-lg border border-border hover:bg-accent/10 transition-calm hover-lift">
+                              {/* Compact Header: Name, Age, Position */}
+                              <div className="flex items-center justify-between mb-1">
+                                <div className="font-medium text-sm">
+                                  {player.name} {age && `(${age})`}
+                                </div>
+                                {user?.role === 'videoscout' && myVerdict && (
+                                  <Badge variant={
+                                    myVerdict === 'Follow-up' ? 'followup' :
+                                    myVerdict === 'Continue Monitoring' ? 'discuss' :
+                                    'notgood'
+                                  } className="text-xs">
+                                    {myVerdict}
+                                  </Badge>
+                                )}
+                                {user?.role === 'datascout' && dataVerdict && (
+                                  <Badge variant={
+                                    dataVerdict === 'Good' ? 'followup' :
+                                    dataVerdict === 'Average' ? 'discuss' :
+                                    'notgood'
+                                  } className="text-xs">
+                                    {dataVerdict}
+                                  </Badge>
+                                )}
                               </div>
                               
-                              {/* Team and Position */}
-                              <div className="grid grid-cols-2 gap-y-1 text-xs">
-                                <div className="text-muted-foreground">Team:</div>
-                                <div className="font-medium">{player.currentTeam}</div>
-                                
-                                <div className="text-muted-foreground">Position:</div>
-                                <div className="font-medium">{player.positionProfile || 'TBD'}</div>
-                                
-                                <div className="text-muted-foreground">Subprofile:</div>
-                                <div className="font-medium text-primary">
-                                  <SubprofileDisplay playerID={player.playerID} />
+                              {/* Compact Info Grid */}
+                              <div className="grid grid-cols-2 gap-x-3 gap-y-0.5 text-xs text-muted-foreground">
+                                <div>
+                                  <span className="font-medium text-foreground">{player.currentTeam}</span>
+                                </div>
+                                <div>
+                                  <span className="font-medium text-foreground">{player.positionProfile || 'TBD'}</span>
                                 </div>
                                 
-                                <div className="text-muted-foreground">Market Value:</div>
-                                <div className="font-medium">
-                                  {player.marketValue 
-                                    ? `€${player.marketValue.toLocaleString()}` 
-                                    : 'N/A'}
+                                <div>
+                                  Subprofile: <span className="font-medium text-primary">
+                                    <SubprofileDisplay playerID={player.playerID} />
+                                  </span>
                                 </div>
-                                
-                                <div className="text-muted-foreground">Contract Until:</div>
-                                <div className="font-medium">
-                                  {player.contractEndDate 
-                                    ? new Date(player.contractEndDate).toLocaleDateString('en-GB', { 
-                                        year: 'numeric', 
-                                        month: 'short' 
-                                      })
-                                    : 'N/A'}
-                                </div>
-                                
-                                <div className="text-muted-foreground">Data Available:</div>
-                                <div className="font-medium">
-                                  <span className={player.dataAvailable ? 'text-followup' : 'text-notgood'}>
+                                <div>
+                                  Data: <span className={player.dataAvailable ? 'text-followup font-medium' : 'text-notgood font-medium'}>
                                     {player.dataAvailable ? 'Yes' : 'No'}
                                   </span>
                                 </div>

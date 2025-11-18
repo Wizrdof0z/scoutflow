@@ -237,9 +237,6 @@ const PROFILES = {
                 weight: 3,
                 metrics: [
                     { id: 'onBallEngagementsOTIP', label: 'On-Ball Engagements OTIP', weight: 2 },
-                    { id: 'onBallEngagementsInHighBlock', label: 'On-Ball Engagements in High Block', weight: 1 },
-                    { id: 'onBallEngagementsInMediumBlock', label: 'On-Ball Engagements in Medium Block', weight: 1 },
-                    { id: 'onBallEngagementsInLowBlock', label: 'On-Ball Engagements in Low Block', weight: 1 },
                     { id: 'beatenByMovement', label: 'Beaten by Movement', weight: 2 },
                     { id: 'beatenByPossession', label: 'Beaten By Possession', weight: 2 },
                     { id: 'forceBackward', label: 'Force Backward per 30 OTIP', weight: 1 },
@@ -301,9 +298,6 @@ const PROFILES = {
                 weight: 3,
                 metrics: [
                     { id: 'onBallEngagementsOTIP', label: 'On-Ball Engagements OTIP', weight: 2 },
-                    { id: 'onBallEngagementsInHighBlock', label: 'On-Ball Engagements in High Block', weight: 1 },
-                    { id: 'onBallEngagementsInMediumBlock', label: 'On-Ball Engagements in Medium Block', weight: 1 },
-                    { id: 'onBallEngagementsInLowBlock', label: 'On-Ball Engagements in Low Block', weight: 1 },
                     { id: 'beatenByMovement', label: 'Beaten by Movement', weight: 2 },
                     { id: 'beatenByPossession', label: 'Beaten By Possession', weight: 2 },
                     { id: 'forceBackward', label: 'Force Backward per 30 OTIP', weight: 1 },
@@ -369,9 +363,6 @@ const PROFILES = {
                 weight: 2,
                 metrics: [
                     { id: 'onBallEngagementsOTIP', label: 'On-Ball Engagements OTIP', weight: 2 },
-                    { id: 'onBallEngagementsInHighBlock', label: 'On-Ball Engagements in High Block', weight: 1 },
-                    { id: 'onBallEngagementsInMediumBlock', label: 'On-Ball Engagements in Medium Block', weight: 1 },
-                    { id: 'onBallEngagementsInLowBlock', label: 'On-Ball Engagements in Low Block', weight: 1 },
                     { id: 'recoveryPressingEngagements', label: 'Recovery Pressing Engagements', weight: 1 },
                     { id: 'pressureEngagements', label: 'Pressure Engagements', weight: 1 },
                     { id: 'pressingEngagements', label: 'Pressing Engagements', weight: 1 },

@@ -27,6 +27,7 @@ import {
 export default function PlayerComparisonPage() {
   const players = useAppStore((state) => state.players)
   const getPlayerRatings = useAppStore((state) => state.getPlayerRatings)
+  const getDataScoutingEntry = useAppStore((state) => state.getDataScoutingEntry)
 
   // Filters
   const [selectedPosition, setSelectedPosition] = useState<string>('all')
@@ -41,6 +42,9 @@ export default function PlayerComparisonPage() {
   
   // Player ratings data
   const [playersRatingsData, setPlayersRatingsData] = useState<Record<string, PlayerRating | null>>({})
+  
+  // Player subprofiles cache
+  const [playerSubProfiles, setPlayerSubProfiles] = useState<Record<string, string | undefined>>({})
 
   // Get unique competitions
   const competitions = ['all', ...Array.from(new Set(players.map(p => p.currentLeague).filter(Boolean))).sort()]
@@ -95,6 +99,26 @@ export default function PlayerComparisonPage() {
     }
   }, [selectedPosition])
 
+  // Load subprofiles for all players
+  useEffect(() => {
+    const loadSubProfiles = async () => {
+      const currentSeason = getCurrentSeason()
+      const seasonID = currentSeason.seasonID
+      const subProfilesData: Record<string, string | undefined> = {}
+      
+      for (const player of players) {
+        const dataEntry = await getDataScoutingEntry(player.playerID, seasonID)
+        subProfilesData[player.playerID] = dataEntry?.subProfile
+      }
+      
+      setPlayerSubProfiles(subProfilesData)
+    }
+    
+    if (players.length > 0) {
+      loadSubProfiles()
+    }
+  }, [players, getDataScoutingEntry])
+
   // Calculate age from date of birth
   const calculateAge = (dateOfBirth: string | undefined): number => {
     if (!dateOfBirth) return 0
@@ -117,7 +141,10 @@ export default function PlayerComparisonPage() {
   const filteredPlayers = players.filter(player => {
     const competitionMatch = selectedCompetition === 'all' || player.currentLeague === selectedCompetition
     const positionMatch = selectedPosition === 'all' || player.positionProfile === selectedPosition
-    const subProfileMatch = selectedSubProfile === 'all' || player.positionProfile === selectedSubProfile
+    
+    // Check subprofile from the cached data
+    const playerSubProfile = playerSubProfiles[player.playerID]
+    const subProfileMatch = selectedSubProfile === 'all' || playerSubProfile === selectedSubProfile
     
     return competitionMatch && positionMatch && subProfileMatch && !selectedPlayers.find(p => p.playerID === player.playerID)
   })

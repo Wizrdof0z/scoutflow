@@ -28,11 +28,25 @@ export default function Layout() {
     setShowSearchResults(false)
   }
 
-  const navItems = [
-    { path: '/', label: 'Dashboard', icon: Home },
-    { path: '/total-overview', label: 'Total Overview', icon: Database },
-    { path: '/player-comparison', label: 'Player Comparison', icon: BarChart3 },
-  ]
+  // Define navigation items based on user role
+  const getNavItems = () => {
+    if (user?.role === 'videoscout') {
+      // Videoscouts see Dashboard, Total Overview, and Live Scouting
+      return [
+        { path: '/', label: 'Dashboard', icon: Home },
+        { path: '/total-overview', label: 'Total Overview', icon: Database },
+        { path: '/live-scouting', label: 'Live Scouting', icon: BarChart3 },
+      ]
+    }
+    // All other roles see the default navigation
+    return [
+      { path: '/', label: 'Dashboard', icon: Home },
+      { path: '/total-overview', label: 'Total Overview', icon: Database },
+      { path: '/player-comparison', label: 'Player Comparison', icon: BarChart3 },
+    ]
+  }
+
+  const navItems = getNavItems()
 
   return (
     <div className="min-h-screen bg-background">
@@ -132,7 +146,7 @@ export default function Layout() {
       <footer className="border-t border-border bg-card mt-16">
         <div className="container mx-auto px-6 py-6">
           <p className="text-sm text-muted-foreground text-center">
-            ScoutFlow © 2025 · Professional Football Scouting Platform
+            ScoutFlow © 2025
           </p>
         </div>
       </footer>
