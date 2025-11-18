@@ -214,36 +214,6 @@ function parseMetricsFromText(text: string): ExtractedMetric[] {
 }
 
 /**
- * Extract all numbers from a text line
- * Returns numbers that could be valid percentile values (1-99, excluding common axis values)
- */
-function extractNumbersFromLine(line: string): number[] {
-  // Match numbers (including decimals)
-  const numberRegex = /\b\d+\.?\d*\b/g
-  const matches = line.match(numberRegex)
-  
-  if (!matches) return []
-  
-  // Common axis values to exclude
-  const axisValues = new Set([0, 25, 50, 75, 100])
-  
-  return matches
-    .map(match => parseFloat(match))
-    .filter(num => {
-      // Must be a valid number
-      if (isNaN(num)) return false
-      
-      // Must be within percentile range
-      if (num < 0 || num > 100) return false
-      
-      // Exclude common axis values
-      if (axisValues.has(num)) return false
-      
-      return true
-    })
-}
-
-/**
  * Match extracted metrics to the metrics defined in metrics-config.ts
  * Uses fuzzy matching to handle OCR errors and variations in naming
  */

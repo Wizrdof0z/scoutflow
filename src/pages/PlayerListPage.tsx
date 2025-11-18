@@ -4,9 +4,9 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card'
 import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
 import { useAppStore } from '@/store'
-import { getCurrentSeason, calculateAge } from '@/utils/helpers'
+import { calculateAge } from '@/utils/helpers'
 import { ArrowLeft, User } from 'lucide-react'
-import type { Player, ListCategory } from '@/types'
+import type { Player } from '@/types'
 
 export default function PlayerListPage() {
   const { category } = useParams<{ category: string }>()

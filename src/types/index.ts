@@ -220,23 +220,23 @@ export interface User {
 
 // Permission helpers
 export const UserPermissions = {
-  canAddPlayers: (role: UserRole) => role !== 'viewer',
-  canDeletePlayers: (role: UserRole) => role === 'admin' || role === 'datascout',
-  canEditPlayerInfo: (role: UserRole) => role !== 'viewer',
-  canChangePlayerList: (role: UserRole) => role !== 'viewer',
+  canAddPlayers: (_role: UserRole) => _role !== 'viewer',
+  canDeletePlayers: (_role: UserRole) => _role === 'admin' || _role === 'datascout',
+  canEditPlayerInfo: (_role: UserRole) => _role !== 'viewer',
+  canChangePlayerList: (_role: UserRole) => _role !== 'viewer',
   
-  canViewDataSummary: (role: UserRole) => true, // All can view
-  canEditDataSummary: (role: UserRole) => role === 'admin' || role === 'datascout',
+  canViewDataSummary: (_role: UserRole) => true, // All can view
+  canEditDataSummary: (_role: UserRole) => _role === 'admin' || _role === 'datascout',
   
-  canViewVideoscouting: (role: UserRole) => true, // All can view
-  canEditVideoscouting: (role: UserRole) => role === 'admin' || role === 'videoscout',
+  canViewVideoscouting: (_role: UserRole) => true, // All can view
+  canEditVideoscouting: (_role: UserRole) => _role === 'admin' || _role === 'videoscout',
   
-  canViewLiveScouting: (role: UserRole) => true, // All can view
-  canEditLiveScouting: (role: UserRole) => role === 'admin' || role === 'livescout',
+  canViewLiveScouting: (_role: UserRole) => true, // All can view
+  canEditLiveScouting: (_role: UserRole) => _role === 'admin' || _role === 'livescout',
   
-  canUploadReports: (role: UserRole) => role === 'admin' || role === 'datascout',
-  canDownloadReports: (role: UserRole) => role !== 'viewer',
-  canDeleteReports: (role: UserRole) => role === 'admin' || role === 'datascout',
+  canUploadReports: (_role: UserRole) => _role === 'admin' || _role === 'datascout',
+  canDownloadReports: (_role: UserRole) => _role !== 'viewer',
+  canDeleteReports: (_role: UserRole) => _role === 'admin' || _role === 'datascout',
   
   canEditRatings: (role: UserRole) => role === 'admin' || role === 'datascout',
 };

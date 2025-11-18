@@ -39,7 +39,6 @@ export default function PlayerProfilePage() {
   const [isEditingRatings, setIsEditingRatings] = useState(false)
   const [showMetricsCalculator, setShowMetricsCalculator] = useState(false)
   const [existingRatings, setExistingRatings] = useState<PlayerRating | null>(null)
-  const [isLoadingRatings, setIsLoadingRatings] = useState(false)
   const [reports, setReports] = useState<Report[]>([])
   const [isLoadingReports, setIsLoadingReports] = useState(false)
   const [uploadingReport, setUploadingReport] = useState(false)
@@ -83,7 +82,6 @@ export default function PlayerProfilePage() {
     async function loadRatings() {
       if (!playerID) return
       
-      setIsLoadingRatings(true)
       try {
         const seasonRatings = await getPlayerRatings(playerID, selectedSeason.seasonID)
         setExistingRatings(seasonRatings)
@@ -109,8 +107,6 @@ export default function PlayerProfilePage() {
         }
       } catch (error) {
         console.error('Error loading ratings:', error)
-      } finally {
-        setIsLoadingRatings(false)
       }
     }
     

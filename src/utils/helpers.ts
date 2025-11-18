@@ -1,4 +1,4 @@
-import { Player, Season } from '@/types';
+import { Season } from '@/types';
 
 // Generate PlayerID from name and date of birth
 export function generatePlayerID(name: string, dateOfBirth: string): string {
