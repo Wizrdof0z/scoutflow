@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card'
 import { Badge } from '@/components/ui/Badge'
 import { useAppStore } from '@/store'
 import { useAuthStore } from '@/store'
 import { getCurrentSeason, calculateAge } from '@/utils/helpers'
+import { autoFillDataScoutingList } from '@/lib/auto-fill-service'
 import type { Player } from '@/types'
 
 // Component to fetch and display subprofile
@@ -62,10 +63,21 @@ export default function HomePage() {
     dataVerdict: string | null 
   }>>(new Map())
   
+  // Track if automation has run to prevent infinite loop
+  const autoFillRan = useRef(false)
+  
   // Load players on mount
   useEffect(() => {
     loadPlayers()
   }, [loadPlayers])
+  
+  // Run auto-fill automation after players are loaded (only once for datascout users)
+  useEffect(() => {
+    if (user?.role === 'datascout' && user?.userID && players.length > 0 && !autoFillRan.current) {
+      autoFillRan.current = true
+      autoFillDataScoutingList(user.userID, players, loadPlayers)
+    }
+  }, [players, user, loadPlayers])
   
   // Count players by list
   useEffect(() => {

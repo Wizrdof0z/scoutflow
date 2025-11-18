@@ -1,5 +1,5 @@
 import { Outlet, Link, useLocation, useNavigate } from 'react-router-dom'
-import { Home, Database, Users, LogOut, UserPlus, Search, BarChart3 } from 'lucide-react'
+import { Home, Database, Users, LogOut, UserPlus, Search, BarChart3, Settings } from 'lucide-react'
 import { useState } from 'react'
 import { useAuthStore } from '@/store'
 import { useAppStore } from '@/store'
@@ -129,6 +129,11 @@ export default function Layout() {
               <div className="text-sm text-muted-foreground">
                 {user?.name} ({user?.role})
               </div>
+              <Link to="/settings">
+                <Button variant="ghost" size="sm">
+                  <Settings className="h-4 w-4" />
+                </Button>
+              </Link>
               <Button variant="ghost" size="sm" onClick={logout}>
                 <LogOut className="h-4 w-4" />
               </Button>
