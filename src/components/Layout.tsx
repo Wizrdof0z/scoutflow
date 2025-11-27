@@ -38,6 +38,15 @@ export default function Layout() {
         { path: '/live-scouting', label: 'Live Scouting', icon: BarChart3 },
       ]
     }
+    // Datascouts and admins see the default navigation + SkillCorner Test
+    if (user?.role === 'datascout' || user?.role === 'admin') {
+      return [
+        { path: '/', label: 'Dashboard', icon: Home },
+        { path: '/total-overview', label: 'Total Overview', icon: Database },
+        { path: '/player-comparison', label: 'Player Comparison', icon: BarChart3 },
+        { path: '/skillcorner/views', label: 'SkillCorner Views', icon: Search },
+      ]
+    }
     // All other roles see the default navigation
     return [
       { path: '/', label: 'Dashboard', icon: Home },

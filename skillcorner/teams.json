@@ -1,0 +1,205 @@
+{
+    "count": 18,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 176,
+            "name": "FC Volendam",
+            "coach": null,
+            "stadium": {
+                "id": 1340,
+                "name": "Kras Stadion",
+                "city": "Volendam",
+                "capacity": 7384
+            }
+        },
+        {
+            "id": 173,
+            "name": "Feyenoord",
+            "coach": null,
+            "stadium": {
+                "id": 250,
+                "name": "De Kuip",
+                "city": "Rotterdam",
+                "capacity": 51177
+            }
+        },
+        {
+            "id": 182,
+            "name": "Excelsior Rotterdam",
+            "coach": null,
+            "stadium": {
+                "id": 491,
+                "name": "Van Donge & De Roo Stadion",
+                "city": "Rotterdam",
+                "capacity": 4500
+            }
+        },
+        {
+            "id": 165,
+            "name": "FC Twente",
+            "coach": null,
+            "stadium": {
+                "id": 1204,
+                "name": "Grolsch Veste Stadium",
+                "city": "Enschede",
+                "capacity": 30205
+            }
+        },
+        {
+            "id": 168,
+            "name": "NEC Nijmegen",
+            "coach": null,
+            "stadium": {
+                "id": 1394,
+                "name": "Goffertstadion",
+                "city": "Nimègue",
+                "capacity": 12500
+            }
+        },
+        {
+            "id": 185,
+            "name": "Go Ahead Eagles",
+            "coach": null,
+            "stadium": {
+                "id": 1567,
+                "name": "De Adelaarshorst",
+                "city": "Deventer",
+                "capacity": 8000
+            }
+        },
+        {
+            "id": 174,
+            "name": "Sparta Rotterdam",
+            "coach": null,
+            "stadium": {
+                "id": 1219,
+                "name": "Sparta Stadium Het Kasteel",
+                "city": "",
+                "capacity": 11026
+            }
+        },
+        {
+            "id": 170,
+            "name": "FC Utrecht",
+            "coach": null,
+            "stadium": {
+                "id": 252,
+                "name": "Stadion Galgenwaard",
+                "city": "Utrecht",
+                "capacity": 23750
+            }
+        },
+        {
+            "id": 171,
+            "name": "PSV Eindhoven",
+            "coach": null,
+            "stadium": {
+                "id": 177,
+                "name": "Philips Stadion",
+                "city": "Eindhoven",
+                "capacity": 35000
+            }
+        },
+        {
+            "id": 163,
+            "name": "FC Groningen",
+            "coach": null,
+            "stadium": {
+                "id": 681,
+                "name": "Hitachi Stadion",
+                "city": "Groningen",
+                "capacity": null
+            }
+        },
+        {
+            "id": 172,
+            "name": "Heracles Almelo",
+            "coach": null,
+            "stadium": {
+                "id": 256,
+                "name": "Polman Stadion",
+                "city": "Almelo",
+                "capacity": 8500
+            }
+        },
+        {
+            "id": 459,
+            "name": "Fortuna Sittard",
+            "coach": null,
+            "stadium": {
+                "id": 251,
+                "name": "Fortuna Sittard Stadion",
+                "city": "Sittard-Geleen",
+                "capacity": 12500
+            }
+        },
+        {
+            "id": 1686,
+            "name": "SC Telstar",
+            "coach": null,
+            "stadium": {
+                "id": 1548,
+                "name": "Rabobank Ijmond Stadion",
+                "city": "Velsen",
+                "capacity": 3200
+            }
+        },
+        {
+            "id": 167,
+            "name": "Ajax Amsterdam",
+            "coach": null,
+            "stadium": {
+                "id": 162,
+                "name": "Johan Cruijff ArenA",
+                "city": "Amsterdam",
+                "capacity": 53031
+            }
+        },
+        {
+            "id": 178,
+            "name": "AZ Alkmaar",
+            "coach": null,
+            "stadium": {
+                "id": 246,
+                "name": "Afas Stadion",
+                "city": "Alkmaar",
+                "capacity": 17023
+            }
+        },
+        {
+            "id": 177,
+            "name": "SC Heerenveen",
+            "coach": null,
+            "stadium": {
+                "id": 245,
+                "name": "Abe Lenstra Stadion",
+                "city": "Heerenveen",
+                "capacity": 26100
+            }
+        },
+        {
+            "id": 179,
+            "name": "NAC Breda",
+            "coach": null,
+            "stadium": {
+                "id": 247,
+                "name": "Rat Verlegh Stadion",
+                "city": "Breda",
+                "capacity": 19000
+            }
+        },
+        {
+            "id": 183,
+            "name": "PEC Zwolle",
+            "coach": null,
+            "stadium": {
+                "id": 255,
+                "name": "Mac3Park Stadion",
+                "city": "Zwolle",
+                "capacity": 13250
+            }
+        }
+    ]
+}

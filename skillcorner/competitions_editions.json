@@ -1,0 +1,806 @@
+{
+    "count": 47,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 412,
+            "competition": {
+                "id": 90,
+                "area": "SWE",
+                "name": "Allsvenskan",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 22,
+                "start_year": 2023,
+                "end_year": 2023,
+                "name": "2023"
+            },
+            "name": "SWE - Allsvenskan - 2023"
+        },
+        {
+            "id": 536,
+            "competition": {
+                "id": 88,
+                "area": "AUT",
+                "name": "Bundesliga",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 28,
+                "start_year": 2023,
+                "end_year": 2024,
+                "name": "2023/2024"
+            },
+            "name": "AUT - Bundesliga - 2023/2024"
+        },
+        {
+            "id": 540,
+            "competition": {
+                "id": 93,
+                "area": "CRO",
+                "name": "1.HNL",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 28,
+                "start_year": 2023,
+                "end_year": 2024,
+                "name": "2023/2024"
+            },
+            "name": "CRO - 1.HNL - 2023/2024"
+        },
+        {
+            "id": 541,
+            "competition": {
+                "id": 94,
+                "area": "CZE",
+                "name": "First League",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 28,
+                "start_year": 2023,
+                "end_year": 2024,
+                "name": "2023/2024"
+            },
+            "name": "CZE - First League - 2023/2024"
+        },
+        {
+            "id": 542,
+            "competition": {
+                "id": 89,
+                "area": "DEN",
+                "name": "Superliga",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 28,
+                "start_year": 2023,
+                "end_year": 2024,
+                "name": "2023/2024"
+            },
+            "name": "DEN - Superliga - 2023/2024"
+        },
+        {
+            "id": 553,
+            "competition": {
+                "id": 64,
+                "area": "GER",
+                "name": "3. Liga",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 28,
+                "start_year": 2023,
+                "end_year": 2024,
+                "name": "2023/2024"
+            },
+            "name": "GER - 3. Liga - 2023/2024"
+        },
+        {
+            "id": 559,
+            "competition": {
+                "id": 17,
+                "area": "NED",
+                "name": "Eredivisie",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 28,
+                "start_year": 2023,
+                "end_year": 2024,
+                "name": "2023/2024"
+            },
+            "name": "NED - Eredivisie - 2023/2024"
+        },
+        {
+            "id": 560,
+            "competition": {
+                "id": 106,
+                "area": "NED",
+                "name": "Eerste Divisie",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 28,
+                "start_year": 2023,
+                "end_year": 2024,
+                "name": "2023/2024"
+            },
+            "name": "NED - Eerste Divisie - 2023/2024"
+        },
+        {
+            "id": 615,
+            "competition": {
+                "id": 102,
+                "area": "POR",
+                "name": "Segunda Liga",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 28,
+                "start_year": 2023,
+                "end_year": 2024,
+                "name": "2023/2024"
+            },
+            "name": "POR - Segunda Liga - 2023/2024"
+        },
+        {
+            "id": 739,
+            "competition": {
+                "id": 145,
+                "area": "DEN",
+                "name": "1st Division",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 28,
+                "start_year": 2023,
+                "end_year": 2024,
+                "name": "2023/2024"
+            },
+            "name": "DEN - 1st Division - 2023/2024"
+        },
+        {
+            "id": 752,
+            "competition": {
+                "id": 98,
+                "area": "HUN",
+                "name": "Nemzeti Bajnokság",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 28,
+                "start_year": 2023,
+                "end_year": 2024,
+                "name": "2023/2024"
+            },
+            "name": "HUN - Nemzeti Bajnokság - 2023/2024"
+        },
+        {
+            "id": 791,
+            "competition": {
+                "id": 124,
+                "area": "NOR",
+                "name": "Eliteserien",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 29,
+                "start_year": 2024,
+                "end_year": 2024,
+                "name": "2024"
+            },
+            "name": "NOR - Eliteserien - 2024"
+        },
+        {
+            "id": 795,
+            "competition": {
+                "id": 90,
+                "area": "SWE",
+                "name": "Allsvenskan",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 29,
+                "start_year": 2024,
+                "end_year": 2024,
+                "name": "2024"
+            },
+            "name": "SWE - Allsvenskan - 2024"
+        },
+        {
+            "id": 872,
+            "competition": {
+                "id": 88,
+                "area": "AUT",
+                "name": "Bundesliga",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 95,
+                "start_year": 2024,
+                "end_year": 2025,
+                "name": "2024/2025"
+            },
+            "name": "AUT - Bundesliga - 2024/2025"
+        },
+        {
+            "id": 882,
+            "competition": {
+                "id": 93,
+                "area": "CRO",
+                "name": "1.HNL",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 95,
+                "start_year": 2024,
+                "end_year": 2025,
+                "name": "2024/2025"
+            },
+            "name": "CRO - 1.HNL - 2024/2025"
+        },
+        {
+            "id": 885,
+            "competition": {
+                "id": 94,
+                "area": "CZE",
+                "name": "First League",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 95,
+                "start_year": 2024,
+                "end_year": 2025,
+                "name": "2024/2025"
+            },
+            "name": "CZE - First League - 2024/2025"
+        },
+        {
+            "id": 886,
+            "competition": {
+                "id": 145,
+                "area": "DEN",
+                "name": "1st Division",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 95,
+                "start_year": 2024,
+                "end_year": 2025,
+                "name": "2024/2025"
+            },
+            "name": "DEN - 1st Division - 2024/2025"
+        },
+        {
+            "id": 888,
+            "competition": {
+                "id": 89,
+                "area": "DEN",
+                "name": "Superliga",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 95,
+                "start_year": 2024,
+                "end_year": 2025,
+                "name": "2024/2025"
+            },
+            "name": "DEN - Superliga - 2024/2025"
+        },
+        {
+            "id": 902,
+            "competition": {
+                "id": 133,
+                "area": "ESP",
+                "name": "Primera Division RFEF",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 95,
+                "start_year": 2024,
+                "end_year": 2025,
+                "name": "2024/2025"
+            },
+            "name": "ESP - Primera Division RFEF - 2024/2025"
+        },
+        {
+            "id": 905,
+            "competition": {
+                "id": 12,
+                "area": "FRA",
+                "name": "Ligue 2",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 95,
+                "start_year": 2024,
+                "end_year": 2025,
+                "name": "2024/2025"
+            },
+            "name": "FRA - Ligue 2 - 2024/2025"
+        },
+        {
+            "id": 907,
+            "competition": {
+                "id": 40,
+                "area": "GER",
+                "name": "2nd Bundesliga",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 95,
+                "start_year": 2024,
+                "end_year": 2025,
+                "name": "2024/2025"
+            },
+            "name": "GER - 2nd Bundesliga - 2024/2025"
+        },
+        {
+            "id": 908,
+            "competition": {
+                "id": 64,
+                "area": "GER",
+                "name": "3. Liga",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 95,
+                "start_year": 2024,
+                "end_year": 2025,
+                "name": "2024/2025"
+            },
+            "name": "GER - 3. Liga - 2024/2025"
+        },
+        {
+            "id": 911,
+            "competition": {
+                "id": 142,
+                "area": "GER",
+                "name": "Regionalliga",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 95,
+                "start_year": 2024,
+                "end_year": 2025,
+                "name": "2024/2025"
+            },
+            "name": "GER - Regionalliga - 2024/2025"
+        },
+        {
+            "id": 912,
+            "competition": {
+                "id": 28,
+                "area": "GRE",
+                "name": "Super League",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 95,
+                "start_year": 2024,
+                "end_year": 2025,
+                "name": "2024/2025"
+            },
+            "name": "GRE - Super League - 2024/2025"
+        },
+        {
+            "id": 913,
+            "competition": {
+                "id": 98,
+                "area": "HUN",
+                "name": "Nemzeti Bajnokság",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 95,
+                "start_year": 2024,
+                "end_year": 2025,
+                "name": "2024/2025"
+            },
+            "name": "HUN - Nemzeti Bajnokság - 2024/2025"
+        },
+        {
+            "id": 924,
+            "competition": {
+                "id": 106,
+                "area": "NED",
+                "name": "Eerste Divisie",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 95,
+                "start_year": 2024,
+                "end_year": 2025,
+                "name": "2024/2025"
+            },
+            "name": "NED - Eerste Divisie - 2024/2025"
+        },
+        {
+            "id": 925,
+            "competition": {
+                "id": 17,
+                "area": "NED",
+                "name": "Eredivisie",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 95,
+                "start_year": 2024,
+                "end_year": 2025,
+                "name": "2024/2025"
+            },
+            "name": "NED - Eredivisie - 2024/2025"
+        },
+        {
+            "id": 929,
+            "competition": {
+                "id": 102,
+                "area": "POR",
+                "name": "Segunda Liga",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 95,
+                "start_year": 2024,
+                "end_year": 2025,
+                "name": "2024/2025"
+            },
+            "name": "POR - Segunda Liga - 2024/2025"
+        },
+        {
+            "id": 946,
+            "competition": {
+                "id": 78,
+                "area": "UEFA",
+                "name": "Youth League",
+                "gender": "male",
+                "age_group": "U19"
+            },
+            "season": {
+                "id": 95,
+                "start_year": 2024,
+                "end_year": 2025,
+                "name": "2024/2025"
+            },
+            "name": "UEFA - Youth League - 2024/2025"
+        },
+        {
+            "id": 957,
+            "competition": {
+                "id": 119,
+                "area": "BEL",
+                "name": "1B Pro League",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 95,
+                "start_year": 2024,
+                "end_year": 2025,
+                "name": "2024/2025"
+            },
+            "name": "BEL - 1B Pro League - 2024/2025"
+        },
+        {
+            "id": 972,
+            "competition": {
+                "id": 113,
+                "area": "ITA",
+                "name": "Serie C",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 95,
+                "start_year": 2024,
+                "end_year": 2025,
+                "name": "2024/2025"
+            },
+            "name": "ITA - Serie C - 2024/2025"
+        },
+        {
+            "id": 1098,
+            "competition": {
+                "id": 90,
+                "area": "SWE",
+                "name": "Allsvenskan",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 128,
+                "start_year": 2025,
+                "end_year": 2025,
+                "name": "2025"
+            },
+            "name": "SWE - Allsvenskan - 2025"
+        },
+        {
+            "id": 1191,
+            "competition": {
+                "id": 94,
+                "area": "CZE",
+                "name": "First League",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 129,
+                "start_year": 2025,
+                "end_year": 2026,
+                "name": "2025/2026"
+            },
+            "name": "CZE - First League - 2025/2026"
+        },
+        {
+            "id": 1212,
+            "competition": {
+                "id": 40,
+                "area": "GER",
+                "name": "2nd Bundesliga",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 129,
+                "start_year": 2025,
+                "end_year": 2026,
+                "name": "2025/2026"
+            },
+            "name": "GER - 2nd Bundesliga - 2025/2026"
+        },
+        {
+            "id": 1215,
+            "competition": {
+                "id": 93,
+                "area": "CRO",
+                "name": "1.HNL",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 129,
+                "start_year": 2025,
+                "end_year": 2026,
+                "name": "2025/2026"
+            },
+            "name": "CRO - 1.HNL - 2025/2026"
+        },
+        {
+            "id": 1225,
+            "competition": {
+                "id": 64,
+                "area": "GER",
+                "name": "3. Liga",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 129,
+                "start_year": 2025,
+                "end_year": 2026,
+                "name": "2025/2026"
+            },
+            "name": "GER - 3. Liga - 2025/2026"
+        },
+        {
+            "id": 1229,
+            "competition": {
+                "id": 119,
+                "area": "BEL",
+                "name": "1B Pro League",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 129,
+                "start_year": 2025,
+                "end_year": 2026,
+                "name": "2025/2026"
+            },
+            "name": "BEL - 1B Pro League - 2025/2026"
+        },
+        {
+            "id": 1230,
+            "competition": {
+                "id": 17,
+                "area": "NED",
+                "name": "Eredivisie",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 129,
+                "start_year": 2025,
+                "end_year": 2026,
+                "name": "2025/2026"
+            },
+            "name": "NED - Eredivisie - 2025/2026"
+        },
+        {
+            "id": 1231,
+            "competition": {
+                "id": 106,
+                "area": "NED",
+                "name": "Eerste Divisie",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 129,
+                "start_year": 2025,
+                "end_year": 2026,
+                "name": "2025/2026"
+            },
+            "name": "NED - Eerste Divisie - 2025/2026"
+        },
+        {
+            "id": 1234,
+            "competition": {
+                "id": 538,
+                "area": "GER",
+                "name": "Regionalliga Nord",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 129,
+                "start_year": 2025,
+                "end_year": 2026,
+                "name": "2025/2026"
+            },
+            "name": "GER - Regionalliga Nord - 2025/2026"
+        },
+        {
+            "id": 1235,
+            "competition": {
+                "id": 539,
+                "area": "GER",
+                "name": "Regionalliga Südwest",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 129,
+                "start_year": 2025,
+                "end_year": 2026,
+                "name": "2025/2026"
+            },
+            "name": "GER - Regionalliga Südwest - 2025/2026"
+        },
+        {
+            "id": 1236,
+            "competition": {
+                "id": 541,
+                "area": "GER",
+                "name": "Regionalliga Nordost",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 129,
+                "start_year": 2025,
+                "end_year": 2026,
+                "name": "2025/2026"
+            },
+            "name": "GER - Regionalliga Nordost - 2025/2026"
+        },
+        {
+            "id": 1238,
+            "competition": {
+                "id": 540,
+                "area": "GER",
+                "name": "Regionalliga West",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 129,
+                "start_year": 2025,
+                "end_year": 2026,
+                "name": "2025/2026"
+            },
+            "name": "GER - Regionalliga West - 2025/2026"
+        },
+        {
+            "id": 1248,
+            "competition": {
+                "id": 12,
+                "area": "FRA",
+                "name": "Ligue 2",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 129,
+                "start_year": 2025,
+                "end_year": 2026,
+                "name": "2025/2026"
+            },
+            "name": "FRA - Ligue 2 - 2025/2026"
+        },
+        {
+            "id": 1261,
+            "competition": {
+                "id": 133,
+                "area": "ESP",
+                "name": "Primera Division RFEF",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 129,
+                "start_year": 2025,
+                "end_year": 2026,
+                "name": "2025/2026"
+            },
+            "name": "ESP - Primera Division RFEF - 2025/2026"
+        },
+        {
+            "id": 1263,
+            "competition": {
+                "id": 28,
+                "area": "GRE",
+                "name": "Super League",
+                "gender": "male",
+                "age_group": "adult"
+            },
+            "season": {
+                "id": 129,
+                "start_year": 2025,
+                "end_year": 2026,
+                "name": "2025/2026"
+            },
+            "name": "GRE - Super League - 2025/2026"
+        },
+        {
+            "id": 1281,
+            "competition": {
+                "id": 78,
+                "area": "UEFA",
+                "name": "Youth League",
+                "gender": "male",
+                "age_group": "U19"
+            },
+            "season": {
+                "id": 129,
+                "start_year": 2025,
+                "end_year": 2026,
+                "name": "2025/2026"
+            },
+            "name": "UEFA - Youth League - 2025/2026"
+        }
+    ]
+}

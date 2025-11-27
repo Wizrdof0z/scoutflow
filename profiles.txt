@@ -1,0 +1,119 @@
+Center Forward: Speed, Agility, Stamina, Attacking Movement, Danger in the Box
+
+Wingers: Speed, Agility, Stamina, Creativity, Attacking Movement, Chance Creation, Pressure Handling
+
+Attacking Midfielder: Speed, Agility, Stamina, Creativity, Chance Creation, Danger in the box, Pressure Handling
+
+Central Midfielder: Speed, Agility, Stamina, Pass Accuracy, Building up, Playmaking
+
+Defensive Midfielder: Speed, Agility, Stamina, Pass Accuracy, Building up, Playmaking
+
+Fullbacks: Speed, Agility, Stamina, Intensity, Lapping Runs, Attacking Movement, Pressure Handling, Pass Accuracy
+
+Central Defender: Speed, Agility, Stamina, Building up, Pass Accuracy, Low Pressure, , Medium Pressure, High Pressure
+
+Speed:
+timetohsr_top3
+timetosprint_top3
+psv99
+explacceltohsr_count_full_all_p90
+explacceltosprint_count_full_all_p90
+
+Agility:
+timetohsrpostcod_top3 (lower is better)
+timetosprintpostcod_top3 (lower is better)
+timeto505around90_top3 (lower is better)
+timeto505around180_top3 (lower is better)
+
+Stamina:
+total_distance_full_all_p90
+sprint_distance_full_all_p90
+sprint_count_full_all_p90
+running_distance_full_all_p90
+hsr_distance_full_all_p90
+total_metersperminute_full_all_p90
+
+Intensity
+hi_distance_full_all_p90
+hi_count_full_all_p90
+
+Attacking Movement
+count_runs_in_behind_per_match
+count_dangerous_runs_in_behind_per_match
+count_runs_ahead_of_the_ball_per_match
+count_dangerous_runs_ahead_of_the_ball_per_match
+count_cross_receiver_runs_per_match
+count_dangerous_cross_receiver_runs_per_match
+
+Danger in the box
+count_runs_in_behind_leading_to_shot_per_match
+count_runs_in_behind_leading_to_goal_per_match
+count_cross_receiver_runs_leading_to_shot_per_match
+count_cross_receiver_runs_leading_to_goal_per_match
+
+
+Creativity
+ball_retention_ratio_under_high_pressure
+(count_dangerous_pass_attempts_under_high_pressure_per_match + dangerous_pass_completion_ratio_under_high_pressure)
+runs_in_behind_to_which_pass_completed_threat_per_match
+runs_ahead_of_the_ball_to_which_pass_completed_threat_per_match
+
+Chance Creation
+(count_pass_opportunities_to_dangerous_runs_in_behind_per_match + count_pass_attempts_to_dangerous_runs_in_behind_per_match + count_completed_pass_to_dangerous_runs_in_behind_per_match) /3
+(count_pass_opportunities_to_dangerous_underlap_runs_per_match  + count_pass_attempts_to_dangerous_underlap_runs_per_match + count_completed_pass_to_dangerous_underlap_runs_per_match) /3
+count_pass_opportunities_to_dangerous_overlap_runs_per_match + count_pass_attempts_to_dangerous_overlap_runs_per_match + count_completed_pass_to_dangerous_overlap_runs_per_match
+(count_pass_opportunities_to_dangerous_cross_receiver_runs_per_m + count_pass_attempts_to_dangerous_cross_receiver_runs_per_match + count_completed_pass_to_dangerous_cross_receiver_runs_per_match) /3
+dangerous_pass_completion_ratio_under_high_pressure 
+
+Pass Accuracy
+pass_completion_ratio_to_support_runs
+pass_completion_ratio_to_pulling_wide_runs
+pass_completion_ratio_to_coming_short_runs
+pass_completion_ratio_to_underlap_runs
+pass_completion_ratio_to_overlap_runs
+pass_completion_ratio_to_dropping_off_runs
+pass_completion_ratio_to_pulling_half_space_runs
+
+Building Up
+count_coming_short_runs_per_match
+pass_completion_ratio_to_coming_short_runs
+count_dropping_off_runs_per_match
+pass_completion_ratio_to_pulling_wide_runs
+pass_completion_ratio_to_runs_ahead_of_the_ball
+
+Playmaking
+count_pass_attempts_to_pulling_wide_runs_per_match
+count_completed_pass_to_pulling_wide_runs_per_match
+count_opportunities_to_pass_to_pulling_half_space_runs_per_matc
+count_pass_attempts_to_pulling_half_space_runs_per_match
+count_completed_pass_to_pulling_half_space_runs_per_match
+
+Low Pressure
+count_low_pressures_received_per_match
+count_forced_losses_under_low_pressure_per_match (lower is better)
+ball_retention_ratio_under_low_pressure
+pass_completion_ratio_under_low_pressure
+
+Medium Pressure
+count_medium_pressures_received_per_match
+count_forced_losses_under_medium_pressure_per_match (lower is better)
+ball_retention_ratio_under_medium_pressure
+pass_completion_ratio_under_medium_pressure
+
+High Pressure
+count_high_pressures_received_per_match
+count_forced_losses_under_high_pressure_per_match (lower is better)
+ball_retention_ratio_under_high_pressure
+pass_completion_ratio_under_high_pressure
+
+Pressure Handling
+ball_retention_ratio_under_high_pressure
+ball_retention_ratio_under_medium_pressure
+ball_retention_ratio_under_low_pressure
+
+Lapping Runs
+count_overlap_runs_per_match
+overlap_runs_threat_per_match
+count_underlap_runs_per_match
+underlap_runs_threat_per_match 
+

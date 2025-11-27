@@ -1,0 +1,71 @@
+-- Remove problematic columns that won't sync with Supabase client
+
+-- Remove from on_ball_pressures_pmatch
+ALTER TABLE on_ball_pressures_pmatch 
+DROP COLUMN IF EXISTS count_completed_dangerous_passes_under_medium_pressure_per_match,
+DROP COLUMN IF EXISTS count_completed_difficult_passes_under_medium_pressure_per_match;
+
+-- Remove from passing_pmatch
+ALTER TABLE passing_pmatch 
+DROP COLUMN IF EXISTS count_completed_pass_to_coming_short_runs_leading_to_goal_per_match,
+DROP COLUMN IF EXISTS count_completed_pass_to_coming_short_runs_leading_to_shot_per_match,
+DROP COLUMN IF EXISTS count_completed_pass_to_cross_receiver_runs_leading_to_goal_per_match,
+DROP COLUMN IF EXISTS count_completed_pass_to_cross_receiver_runs_leading_to_shot_per_match,
+DROP COLUMN IF EXISTS count_completed_pass_to_dangerous_pulling_half_space_runs_per_match,
+DROP COLUMN IF EXISTS count_completed_pass_to_dangerous_runs_ahead_of_the_ball_per_match,
+DROP COLUMN IF EXISTS count_completed_pass_to_dropping_off_runs_leading_to_goal_per_match,
+DROP COLUMN IF EXISTS count_completed_pass_to_dropping_off_runs_leading_to_shot_per_match,
+DROP COLUMN IF EXISTS count_completed_pass_to_pulling_half_space_runs_leading_to_goal_per_match,
+DROP COLUMN IF EXISTS count_completed_pass_to_pulling_half_space_runs_leading_to_shot_per_match,
+DROP COLUMN IF EXISTS count_completed_pass_to_pulling_wide_runs_leading_to_goal_per_match,
+DROP COLUMN IF EXISTS count_completed_pass_to_pulling_wide_runs_leading_to_shot_per_match,
+DROP COLUMN IF EXISTS count_completed_pass_to_runs_ahead_of_the_ball_leading_to_goal_per_match,
+DROP COLUMN IF EXISTS count_completed_pass_to_runs_ahead_of_the_ball_leading_to_shot_per_match,
+DROP COLUMN IF EXISTS count_completed_pass_to_runs_in_behind_leading_to_goal_per_match,
+DROP COLUMN IF EXISTS count_completed_pass_to_runs_in_behind_leading_to_shot_per_match,
+DROP COLUMN IF EXISTS count_opportunities_to_pass_to_pulling_half_space_runs_in_sample,
+DROP COLUMN IF EXISTS count_opportunities_to_pass_to_pulling_half_space_runs_per_match,
+DROP COLUMN IF EXISTS count_pass_attempts_to_dangerous_pulling_half_space_runs_per_match,
+DROP COLUMN IF EXISTS count_pass_attempts_to_dangerous_runs_ahead_of_the_ball_per_match,
+DROP COLUMN IF EXISTS count_pass_opportunities_to_dangerous_coming_short_runs_per_match,
+DROP COLUMN IF EXISTS count_pass_opportunities_to_dangerous_cross_receiver_runs_per_match,
+DROP COLUMN IF EXISTS count_pass_opportunities_to_dangerous_dropping_off_runs_per_match,
+DROP COLUMN IF EXISTS count_pass_opportunities_to_dangerous_pulling_half_space_runs_per_match,
+DROP COLUMN IF EXISTS count_pass_opportunities_to_dangerous_pulling_wide_runs_per_match,
+DROP COLUMN IF EXISTS count_pass_opportunities_to_dangerous_runs_ahead_of_the_ball_per_match,
+DROP COLUMN IF EXISTS count_pass_opportunities_to_dangerous_runs_in_behind_per_match,
+DROP COLUMN IF EXISTS coming_short_runs_to_which_pass_attempted_threat_per_match,
+DROP COLUMN IF EXISTS cross_receiver_runs_to_which_pass_attempted_threat_per_match,
+DROP COLUMN IF EXISTS dropping_off_runs_to_which_pass_attempted_threat_per_match,
+DROP COLUMN IF EXISTS overlap_runs_to_which_pass_attempted_threat_per_match,
+DROP COLUMN IF EXISTS pulling_half_space_runs_to_which_pass_attempted_threat_per_match,
+DROP COLUMN IF EXISTS pulling_wide_runs_to_which_pass_attempted_threat_per_match,
+DROP COLUMN IF EXISTS runs_ahead_of_the_ball_to_which_pass_attempted_threat_per_match,
+DROP COLUMN IF EXISTS runs_in_behind_to_which_pass_attempted_threat_per_match,
+DROP COLUMN IF EXISTS support_runs_to_which_pass_attempted_threat_per_match,
+DROP COLUMN IF EXISTS underlap_runs_to_which_pass_attempted_threat_per_match,
+DROP COLUMN IF EXISTS coming_short_runs_to_which_pass_completed_threat_per_match,
+DROP COLUMN IF EXISTS cross_receiver_runs_to_which_pass_completed_threat_per_match,
+DROP COLUMN IF EXISTS dropping_off_runs_to_which_pass_completed_threat_per_match,
+DROP COLUMN IF EXISTS overlap_runs_to_which_pass_completed_threat_per_match,
+DROP COLUMN IF EXISTS pulling_half_space_runs_to_which_pass_completed_threat_per_match,
+DROP COLUMN IF EXISTS pulling_wide_runs_to_which_pass_completed_threat_per_match,
+DROP COLUMN IF EXISTS runs_ahead_of_the_ball_to_which_pass_completed_threat_per_match,
+DROP COLUMN IF EXISTS runs_in_behind_to_which_pass_completed_threat_per_match,
+DROP COLUMN IF EXISTS support_runs_to_which_pass_completed_threat_per_match,
+DROP COLUMN IF EXISTS underlap_runs_to_which_pass_completed_threat_per_match;
+
+
+-- Reload schema cache
+NOTIFY pgrst, 'reload schema';
+
+-- Verify columns are removed
+SELECT 
+    table_name,
+    column_name
+FROM information_schema.columns 
+WHERE table_name IN ('on_ball_pressures_pmatch', 'passing_pmatch')
+    AND column_name IN (
+        'count_completed_dangerous_passes_under_medium_pressure_per_match',
+        'count_completed_pass_to_coming_short_runs_leading_to_goal_per_match'
+    );

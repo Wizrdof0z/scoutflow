@@ -1,6 +1,84 @@
 import { supabase } from './supabase'
 import type { Player, PlayerRating, Report, Verdict, DataScoutingEntry, VideoscoutingEntry, LiveScoutingEntry } from '@/types'
 
+// SkillCorner Stats - fetch by position from position-specific tables
+export async function getSkillCornerStatsByPosition(position: string) {
+  console.log('Supabase Service - Querying position-specific table for:', position)
+  
+  // Map position to specific table (use ratings tables for better performance)
+  let tableName: string
+  
+  switch(position) {
+    case 'CF':
+      tableName = 'cf_player_ratings'
+      break
+    case 'LW':
+    case 'RW':
+      tableName = 'winger_player_ratings'
+      break
+    case 'AM':
+    case 'CAM':
+    case 'LAM':
+    case 'RAM':
+      tableName = 'am_player_ratings'
+      break
+    case 'CM':
+    case 'LCM':
+    case 'RCM':
+      tableName = 'cm_player_ratings'
+      break
+    case 'DM':
+    case 'CDM':
+    case 'LDM':
+    case 'RDM':
+      tableName = 'dm_player_ratings'
+      break
+    case 'LB':
+    case 'LWB':
+    case 'RB':
+    case 'RWB':
+      tableName = 'fullback_player_ratings'
+      break
+    case 'CB':
+    case 'LCB':
+    case 'RCB':
+      tableName = 'cb_player_ratings'
+      break
+    default:
+      // Fallback to unified view for positions not yet migrated
+      tableName = 'vw_player_stats'
+  }
+  
+  console.log('Supabase Service - Using table:', tableName)
+  
+  // Query the appropriate table (player_birthdate is already in the ratings tables from physical_p90)
+  const { data, error } = await supabase
+    .from(tableName)
+    .select('*')
+    .limit(5000)
+  
+  if (error) {
+    console.error('Supabase Service - Error details:', {
+      message: error.message,
+      details: error.details,
+      hint: error.hint,
+      code: error.code,
+      table: tableName
+    })
+    throw error
+  }
+  
+  console.log('Supabase Service - Query successful, rows:', data?.length || 0)
+  
+  // Map player_birthdate to date_of_birth for consistency with frontend
+  const mappedData = data?.map((row: any) => ({
+    ...row,
+    date_of_birth: row.player_birthdate
+  })) || []
+  
+  return mappedData
+}
+
 // Players
 export async function getAllPlayers(): Promise<Player[]> {
   const { data, error } = await supabase

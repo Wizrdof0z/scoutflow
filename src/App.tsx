@@ -9,6 +9,8 @@ import TotalOverviewPage from './pages/TotalOverviewPage'
 import PlayerComparisonPage from './pages/PlayerComparisonPage'
 import LiveScoutingPage from './pages/LiveScoutingPage'
 import SettingsPage from './pages/SettingsPage'
+import SkillCornerPlayerProfilePage from './pages/SkillCornerPlayerProfilePage'
+import SkillCornerViewsPage from './pages/SkillCornerViewsPage'
 import LoginPage from './pages/LoginPage'
 import { useAuthStore } from './store'
 
@@ -38,6 +40,8 @@ function App() {
           <Route path="player-comparison" element={<PlayerComparisonPage />} />
           <Route path="live-scouting" element={<LiveScoutingPage />} />
           <Route path="settings" element={<SettingsPage />} />
+          <Route path="skillcorner/views" element={<SkillCornerViewsPage />} />
+          <Route path="skillcorner/player/:playerId" element={<SkillCornerPlayerProfilePage />} />
         </Route>
       </Routes>
     </Router>
