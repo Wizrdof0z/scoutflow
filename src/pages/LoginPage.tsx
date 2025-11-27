@@ -122,16 +122,6 @@ export default function LoginPage() {
             {loading ? 'Signing in...' : 'Sign in'}
           </Button>
         </form>
-
-        <div className="mt-6 text-sm text-gray-600 text-center">
-          <p className="font-medium mb-2">Test Users:</p>
-          <div className="space-y-1 text-xs">
-            <p>Datascout: <code className="bg-gray-100 px-2 py-1 rounded">jeroen / jeroen</code></p>
-            <p>Videoscout: <code className="bg-gray-100 px-2 py-1 rounded">kyle / kyle</code> or <code className="bg-gray-100 px-2 py-1 rounded">toer / toer</code></p>
-            <p>Livescout: <code className="bg-gray-100 px-2 py-1 rounded">jurjan / jurjan</code></p>
-            <p>Viewer: <code className="bg-gray-100 px-2 py-1 rounded">guest / guest</code></p>
-          </div>
-        </div>
       </Card>
     </div>
   );
