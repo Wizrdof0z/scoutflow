@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card'
 import { Label } from '@/components/ui/Label'
 import { Select } from '@/components/ui/Select'
-import { Badge } from '@/components/ui/Badge'
 import { supabase } from '@/lib/supabase'
 import { calculateAge, formatStatValue, getPositionGroup } from '@/utils/position-helpers'
 

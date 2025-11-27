@@ -144,32 +144,6 @@ export default function SettingsPage() {
     }
   }
 
-  const handlePopulateSkillCornerData = async () => {
-    if (!user || user.role !== 'admin') {
-      alert('Only admins can populate SkillCorner data')
-      return
-    }
-
-    if (!confirm('This will fetch competition editions, teams, and players from SkillCorner API. This may take several minutes and consume API calls. Continue?')) {
-      return
-    }
-
-    setPopulating(true)
-    setPopulationStatus('Starting data population...')
-
-    try {
-      const result = await populateSkillCornerData()
-      setPopulationStatus(`✓ Population completed successfully in ${result.duration}s`)
-      alert('SkillCorner data populated successfully!')
-    } catch (error) {
-      console.error('Error populating SkillCorner data:', error)
-      setPopulationStatus('✗ Population failed. Check console for details.')
-      alert('Failed to populate SkillCorner data. Check console for details.')
-    } finally {
-      setPopulating(false)
-    }
-  }
-
   const handleFetchCompetitionEditions = async () => {
     if (!user || user.role !== 'admin') {
       alert('Only admins can fetch SkillCorner data')
