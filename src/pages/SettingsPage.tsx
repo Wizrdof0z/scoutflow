@@ -6,7 +6,6 @@ import { Select } from '@/components/ui/Select'
 import { useAuthStore } from '@/store'
 import { supabase } from '@/lib/supabase'
 import type { PositionProfile } from '@/types'
-import { populateSkillCornerData } from '@/utils/populate-skillcorner-data'
 
 interface UserPreferences {
   priorityPosition1: string
