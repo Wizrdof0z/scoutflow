@@ -87,6 +87,10 @@ export const PROFILES: Record<string, Profile> = {
           { id: 'explosiveAccelHsr', label: 'Explosive Acceleration to HSR (P90)', weight: 1 },
           { id: 'sprintCount', label: 'Sprint Count', weight: 2 },
           { id: 'HiDistance', label: 'High Intensity Distance per 90min', weight: 1 },
+          { id: 'TimeToSprintPostCod', label: 'Time to Sprint Post Cod', weight: 1 },
+          { id: 'TimeToHsrPostCod', label: 'Time to HSR Post Cod', weight: 1 },
+          { id: 'TimeTo505(90)', label: 'Time to 505 (90)', weight: 1 },
+          { id: 'TimeTo505(180)', label: 'Time to 505 (180)', weight: 1 }
         ]
       },
       {
@@ -159,7 +163,11 @@ export const PROFILES: Record<string, Profile> = {
           { id: 'highAccelCount', label: 'High Acceleration Count', weight: 1 },
           { id: 'explosiveAccelSprint', label: 'Explosive Acceleration to Sprint (P90)', weight: 1 },
           { id: 'explosiveAccelHsr', label: 'Explosive Acceleration to HSR (P90)', weight: 1 },
-          { id: 'sprintCount', label: 'Sprint Count', weight: 2 }
+          { id: 'sprintCount', label: 'Sprint Count', weight: 2 },
+          { id: 'TimeToSprintPostCod', label: 'Time to Sprint Post Cod', weight: 1 },
+          { id: 'TimeToHsrPostCod', label: 'Time to HSR Post Cod', weight: 1 },
+          { id: 'TimeTo505(90)', label: 'Time to 505 (90)', weight: 1 },
+          { id: 'TimeTo505(180)', label: 'Time to 505 (180)', weight: 1 }
         ]
       },
       {
@@ -232,6 +240,10 @@ export const PROFILES: Record<string, Profile> = {
           { id: 'timeToHsrTop3', label: 'Time to HSR Top 3', weight: 1 },
           { id: 'highAccelCount', label: 'High Acceleration Count', weight: 2 },
           { id: 'highDecelCount', label: 'High Deceleration Count', weight: 2 },
+          { id: 'TimeToSprintPostCod', label: 'Time to Sprint Post Cod', weight: 1 },
+          { id: 'TimeToHsrPostCod', label: 'Time to HSR Post Cod', weight: 1 },
+          { id: 'TimeTo505(90)', label: 'Time to 505 (90)', weight: 1 },
+          { id: 'TimeTo505(180)', label: 'Time to 505 (180)', weight: 1 }
         ]
       },
       {
@@ -292,7 +304,11 @@ export const PROFILES: Record<string, Profile> = {
           { id: 'maxSpeedTop5', label: 'Max Speed Top 5', weight: 1 },
           { id: 'mediumAccelCount', label: 'Medium Acceleration Count', weight: 1 },
           { id: 'highAccelCount', label: 'High Acceleration Count', weight: 1 },
-          { id: 'sprintCount', label: 'Sprint Count', weight: 2 }
+          { id: 'sprintCount', label: 'Sprint Count', weight: 2 },
+          { id: 'TimeToSprintPostCod', label: 'Time to Sprint Post Cod', weight: 1 },
+          { id: 'TimeToHsrPostCod', label: 'Time to HSR Post Cod', weight: 1 },
+          { id: 'TimeTo505(90)', label: 'Time to 505 (90)', weight: 1 },
+          { id: 'TimeTo505(180)', label: 'Time to 505 (180)', weight: 1 }
         ]
       },
       {
@@ -353,7 +369,11 @@ export const PROFILES: Record<string, Profile> = {
           { id: 'maxSpeedTop5', label: 'Max Speed Top 5', weight: 1 },
           { id: 'timeToSprintTop3', label: 'Time to Sprint Top 3', weight: 1 },
           { id: 'timeToHsrTop3', label: 'Time to HSR Top 3', weight: 1 },
-          { id: 'sprintCount', label: 'Sprint Count', weight: 2 }
+          { id: 'sprintCount', label: 'Sprint Count', weight: 2 },
+          { id: 'TimeToSprintPostCod', label: 'Time to Sprint Post Cod', weight: 1 },
+          { id: 'TimeToHsrPostCod', label: 'Time to HSR Post Cod', weight: 1 },
+          { id: 'TimeTo505(90)', label: 'Time to 505 (90)', weight: 1 },
+          { id: 'TimeTo505(180)', label: 'Time to 505 (180)', weight: 1 }
         ]
       },
       {
@@ -424,57 +444,65 @@ export const PROFILES: Record<string, Profile> = {
           { id: 'explosiveAccelSprint', label: 'Explosive Acceleration to Sprint (P90)', weight: 1 },
           { id: 'explosiveAccelHsr', label: 'Explosive Acceleration to HSR (P90)', weight: 1 },
           { id: 'metersPerMinuteTIP', label: 'Meters Per Minute per 90min (TIP)', weight: 2 },
-          { id: 'sprintCount', label: 'Sprint Count', weight: 2 }
+          { id: 'metersPerMinuteOTIP', label: 'Meters Per Minute per 90min (OTIP)', weight: 2 },
+          { id: 'TimeToSprintPostCod', label: 'Time to Sprint Post Cod', weight: 1 },
+          { id: 'TimeToHsrPostCod', label: 'Time to HSR Post Cod', weight: 1 }
         ]
       },
       {
         name: 'Movement',
-        weight: 2,
+        weight: 3,
         metrics: [
-          { id: 'supportRuns', label: 'Support Runs', weight: 2 },
-          { id: 'runsMakingBoxReceivable', label: 'Runs Making Box Receivable', weight: 2 },
-          { id: 'runsMakingBoxReceivableThreat', label: 'Runs Making Box Receivable Threat', weight: 1 },
-          { id: 'runsAhead', label: 'Runs Ahead', weight: 1 },
+          { id: 'runsInBehind', label: 'Runs in Behind', weight: 1 },
+          { id: 'runsInBehindThreat', label: 'Runs in Behind Threat', weight: 1 },
+          { id: 'runsAhead', label: 'Runs Ahead', weight: 2 },
           { id: 'runsAheadThreat', label: 'Runs Ahead Threat', weight: 1 },
-          { id: 'halfSpaceRuns', label: 'Half Space Runs', weight: 1 },
-          { id: 'halfSpaceRunsThreat', label: 'Half Space Runs Threat', weight: 1 }
+          { id: 'crossReceiverRuns', label: 'Cross Receiver Runs', weight: 2 },
+          { id: 'crossReceiverRunsThreat', label: 'Cross Receiver Runs Threat', weight: 1 },
+          { id: 'dangerousRuns', label: 'Dangerous Runs', weight: 2 },
+          { id: 'runsLeadingToShot', label: 'Runs Leading to Shot', weight: 2 }
         ]
       },
       {
         name: 'Passing Metrics',
-        weight: 2,
+        weight: 1,
         metrics: [
-          { id: 'passAttemptsToRuns', label: 'Pass Attempts to Player Making a Run', weight: 2 },
-          { id: 'passCompletionToRuns', label: 'Pass Completion to Player Making a Run', weight: 1 },
-          { id: 'passAttemptsRunsAhead', label: 'Pass Attempts Runs Ahead', weight: 2 },
+          { id: 'passAttemptsRunsInBehind', label: 'Pass Attempts Runs In Behind', weight: 1 },
+          { id: 'passCompletionRunsInBehind', label: 'Pass Completion Runs In Behind', weight: 1 },
+          { id: 'passAttemptsRunsAhead', label: 'Pass Attempts Runs Ahead', weight: 1 },
           { id: 'passCompletionRunsAhead', label: 'Pass Completion Runs Ahead', weight: 1 },
-          { id: 'passAttemptsToHalfSpace', label: 'Pass Attempts to Half Space', weight: 1 },
-          { id: 'passCompletionToHalfSpace', label: 'Pass Completion to Half Space', weight: 1 }
+          { id: 'passAttemptsCross', label: 'Pass Attempts Cross Receiver', weight: 1 },
+          { id: 'passCompletionCross', label: 'Pass Completion Cross Receiver', weight: 1 },
+          { id: 'passAttemptsToRuns', label: 'Pass Attempts to Player Making a Run', weight: 2 }
         ]
       },
       {
         name: 'Pressure Handling',
-        weight: 2,
+        weight: 1,
         metrics: [
           { id: 'ballRetentionHigh', label: 'Ball Retention Under High Pressure', weight: 2 },
-          { id: 'passCompletionHigh', label: 'Pass Completion Under High Pressure', weight: 2 },
+          { id: 'passCompletionHigh', label: 'Pass Completion Under High Pressure', weight: 1 },
           { id: 'ballRetentionMedium', label: 'Ball Retention Under Medium Pressure', weight: 2 },
-          { id: 'passCompletionMedium', label: 'Pass Completion Under Medium Pressure', weight: 2 },
+          { id: 'passCompletionMedium', label: 'Pass Completion Under Medium Pressure', weight: 1 },
+          { id: 'ballRetentionLow', label: 'Ball Retention Under Low Pressure', weight: 2 },
+          { id: 'passCompletionLow', label: 'Pass Completion Under Low Pressure', weight: 1 },
           { id: 'dangerousPassHigh', label: 'Dangerous Pass Completion Under High Pressure', weight: 2 },
           { id: 'difficultPassHigh', label: 'Difficult Pass Completion Under High Pressure', weight: 2 }
         ]
       },
       {
         name: 'Defensive Actions',
-        weight: 1,
+        weight: 2,
         metrics: [
-          { id: 'onBallEngagementsOTIP', label: 'On-Ball Engagements OTIP', weight: 1 },
+          { id: 'onBallEngagementsOTIP', label: 'On-Ball Engagements OTIP', weight: 2 },
           { id: 'recoveryPressingEngagements', label: 'Recovery Pressing Engagements', weight: 1 },
           { id: 'counterPressingEngagements', label: 'Counter Pressing Engagements', weight: 2 },
           { id: 'pressureEngagements', label: 'Pressure Engagements', weight: 2 },
           { id: 'pressingEngagements', label: 'Pressing Engagements', weight: 2 },
+          { id: 'beatenByMovement', label: 'Beaten by Movement', weight: 1 },
+          { id: 'beatenByPossession', label: 'Beaten By Possession', weight: 1 },
           { id: 'forceBackward', label: 'Force Backward per 30 OTIP', weight: 2 },
-          { id: 'regains', label: 'Regains per 30 OTIP', weight: 1 },
+          { id: 'regains', label: 'Regains per 30 OTIP', weight: 1 }
         ]
       }
     ]
@@ -482,7 +510,6 @@ export const PROFILES: Record<string, Profile> = {
 
   'traditional_winger': {
     name: 'Traditional Winger',
-    emoji: '⚡',
     sections: [
       {
         name: 'Physical Metrics',
@@ -491,33 +518,192 @@ export const PROFILES: Record<string, Profile> = {
           { id: 'maxSpeed', label: 'Max Speed', weight: 2 },
           { id: 'maxSpeedTop5', label: 'Max Speed Top 5', weight: 2 },
           { id: 'timeToSprintTop3', label: 'Time to Sprint Top 3', weight: 2 },
-          { id: 'timeToHsrTop3', label: 'Time to HSR Top 3', weight: 1 },
-          { id: 'explosiveAccelSprint', label: 'Explosive Acceleration to Sprint (P90)', weight: 1 },
-          { id: 'explosiveAccelHsr', label: 'Explosive Acceleration to HSR (P90)', weight: 1 },
+          { id: 'timeToHsrTop3', label: 'Time to HSR Top 3', weight: 2 },
+          { id: 'explosiveAccelSprint', label: 'Explosive Acceleration to Sprint (P90)', weight: 2 },
+          { id: 'explosiveAccelHsr', label: 'Explosive Acceleration to HSR (P90)', weight: 2 },
+          { id: 'HiDistance', label: 'High Intensity Distance per 90min', weight: 1 },
           { id: 'sprintCount', label: 'Sprint Count', weight: 2 },
-          { id: 'HiDistance', label: 'High Intensity Distance per 90min', weight: 1 }
+          { id: 'TimeToSprintPostCod', label: 'Time to Sprint Post Cod', weight: 2 },
+          { id: 'TimeToHsrPostCod', label: 'Time to HSR Post Cod', weight: 2 },
+          { id: 'TimeTo505(90)', label: 'Time to 505 (90)', weight: 1 },
+          { id: 'TimeTo505(180)', label: 'Time to 505 (180)', weight: 1 }
         ]
       },
       {
         name: 'Movement',
         weight: 3,
         metrics: [
-          { id: 'pullingWideRuns', label: 'Pulling Wide Runs', weight: 2 },
-          { id: 'pullingWideRunsThreat', label: 'Pulling Wide Runs Threat', weight: 1 },
+          { id: 'overlaps', label: 'Overlaps', weight: 1 },
+          { id: 'overlapsThreat', label: 'Overlaps Threat', weight: 1 },
+          { id: 'underlaps', label: 'Underlaps', weight: 1 },
+          { id: 'underlapsThreat', label: 'Underlaps Threat', weight: 1 },
           { id: 'runsInBehind', label: 'Runs in Behind', weight: 2 },
-          { id: 'runsInBehindThreat', label: 'Runs in Behind Threat', weight: 1 },
-          { id: 'runsAhead', label: 'Runs Ahead', weight: 1 },
-          { id: 'runsAheadThreat', label: 'Runs Ahead Threat', weight: 1 }
+          { id: 'runsInBehindThreat', label: 'Runs in Behind Threat', weight: 2 },
+          { id: 'runsAhead', label: 'Runs Ahead', weight: 2 },
+          { id: 'runsAheadThreat', label: 'Runs Ahead Threat', weight: 2 }
         ]
       },
       {
         name: 'Passing Metrics',
         weight: 1,
         metrics: [
+          { id: 'passAttemptsOverlaps', label: 'Pass Attempts Overlaps', weight: 1 },
+          { id: 'passCompletionOverlaps', label: 'Pass Completion Overlaps', weight: 1 },
+          { id: 'passAttemptsUnderlaps', label: 'Pass Attempts Underlaps', weight: 1 },
+          { id: 'passCompletionUnderlaps', label: 'Pass Completion Underlaps', weight: 1 },
           { id: 'passAttemptsCross', label: 'Pass Attempts Cross Receiver', weight: 2 },
-          { id: 'passCompletionCross', label: 'Pass Completion Cross Receiver', weight: 2 },
-          { id: 'passAttemptsRunsInBehind', label: 'Pass Attempts Runs In Behind', weight: 1 },
-          { id: 'passCompletionRunsInBehind', label: 'Pass Completion Runs In Behind', weight: 1 }
+          { id: 'passCompletionCross', label: 'Pass Completion Cross Receiver', weight: 2 }
+        ]
+      },
+      {
+        name: 'Pressure Handling',
+        weight: 1,
+        metrics: [
+          { id: 'ballRetentionHigh', label: 'Ball Retention Under High Pressure', weight: 1 },
+          { id: 'passCompletionHigh', label: 'Pass Completion Under High Pressure', weight: 1 },
+          { id: 'ballRetentionMedium', label: 'Ball Retention Under Medium Pressure', weight: 1 },
+          { id: 'passCompletionMedium', label: 'Pass Completion Under Medium Pressure', weight: 1 },
+          { id: 'ballRetentionLow', label: 'Ball Retention Under Low Pressure', weight: 1 },
+          { id: 'passCompletionLow', label: 'Pass Completion Under Low Pressure', weight: 1 },
+          { id: 'dangerousPassHigh', label: 'Dangerous Pass Completion Under High Pressure', weight: 1 },
+          { id: 'difficultPassHigh', label: 'Difficult Pass Completion Under High Pressure', weight: 1 }
+        ]
+      },
+      {
+        name: 'Defensive Actions',
+        weight: 2,
+        metrics: [
+          { id: 'onBallEngagementsOTIP', label: 'On-Ball Engagements OTIP', weight: 2 },
+          { id: 'recoveryPressingEngagements', label: 'Recovery Pressing Engagements', weight: 2 },
+          { id: 'counterPressingEngagements', label: 'Counter Pressing Engagements', weight: 2 },
+          { id: 'pressureEngagements', label: 'Pressure Engagements', weight: 2 },
+          { id: 'pressingEngagements', label: 'Pressing Engagements', weight: 1 },
+          { id: 'forceBackward', label: 'Force Backward per 30 OTIP', weight: 1 },
+          { id: 'regains', label: 'Regains per 30 OTIP', weight: 1 }
+        ]
+      }
+    ]
+  },
+
+  'inverted_winger': {
+    name: 'Inverted Winger',
+    sections: [
+      {
+        name: 'Physical Metrics',
+        weight: 2,
+        metrics: [
+          { id: 'maxSpeed', label: 'Max Speed', weight: 1 },
+          { id: 'maxSpeedTop5', label: 'Max Speed Top 5', weight: 2 },
+          { id: 'timeToSprintTop3', label: 'Time to Sprint Top 3', weight: 1 },
+          { id: 'timeToHsrTop3', label: 'Time to HSR Top 3', weight: 1 },
+          { id: 'explosiveAccelSprint', label: 'Explosive Acceleration to Sprint (P90)', weight: 1 },
+          { id: 'explosiveAccelHsr', label: 'Explosive Acceleration to HSR (P90)', weight: 1 },
+          { id: 'sprintCount', label: 'Sprint Count', weight: 2 },
+          { id: 'TimeTo505(90)', label: 'Time to 505 (90)', weight: 1 },
+          { id: 'TimeTo505(180)', label: 'Time to 505 (180)', weight: 1 }
+        ]
+      },
+      {
+        name: 'Movement',
+        weight: 1,
+        metrics: [
+          { id: 'comingShort', label: 'Coming Short', weight: 1 },
+          { id: 'pullingHalfSpace', label: 'Pulling Half Space', weight: 2 },
+          { id: 'runsAhead', label: 'Runs Ahead', weight: 1 },
+          { id: 'runsAheadThreat', label: 'Runs Ahead Threat', weight: 1 },
+          { id: 'runsInBehind', label: 'Runs in Behind', weight: 2 },
+          { id: 'runsInBehindThreat', label: 'Runs in Behind Threat', weight: 1 }
+        ]
+      },
+      {
+        name: 'Passing Metrics',
+        weight: 3,
+        metrics: [
+          { id: 'passAttemptsRunsInBehind', label: 'Pass Attempts Runs In Behind', weight: 2 },
+          { id: 'passCompletionRunsInBehind', label: 'Pass Completion Runs In Behind', weight: 2 },
+          { id: 'passAttemptsRunsAhead', label: 'Pass Attempts Runs Ahead', weight: 2 },
+          { id: 'passCompletionRunsAhead', label: 'Pass Completion Runs Ahead', weight: 2 },
+          { id: 'passAttemptsCross', label: 'Pass Attempts Cross Receiver', weight: 1 },
+          { id: 'passCompletionCross', label: 'Pass Completion Cross Receiver', weight: 1 }
+        ]
+      },
+      {
+        name: 'Pressure Handling',
+        weight: 3,
+        metrics: [
+          { id: 'ballRetentionHigh', label: 'Ball Retention Under High Pressure', weight: 2 },
+          { id: 'passCompletionHigh', label: 'Pass Completion Under High Pressure', weight: 2 },
+          { id: 'ballRetentionMedium', label: 'Ball Retention Under Medium Pressure', weight: 1 },
+          { id: 'passCompletionMedium', label: 'Pass Completion Under Medium Pressure', weight: 1 },
+          { id: 'ballRetentionLow', label: 'Ball Retention Under Low Pressure', weight: 1 },
+          { id: 'passCompletionLow', label: 'Pass Completion Under Low Pressure', weight: 1 },
+          { id: 'dangerousPassAttemptsHigh', label: 'Dangerous Pass Attempts Under High Pressure', weight: 2 },
+          { id: 'dangerousPassHigh', label: 'Dangerous Pass Completion Under High Pressure', weight: 2 },
+          { id: 'difficultPassHigh', label: 'Difficult Pass Completion Under High Pressure', weight: 2 }
+        ]
+      },
+      {
+        name: 'Defensive Actions',
+        weight: 1,
+        metrics: [
+          { id: 'onBallEngagementsOTIP', label: 'On-Ball Engagements OTIP', weight: 2 },
+          { id: 'recoveryPressingEngagements', label: 'Recovery Pressing Engagements', weight: 2 },
+          { id: 'counterPressingEngagements', label: 'Counter Pressing Engagements', weight: 2 },
+          { id: 'pressureEngagements', label: 'Pressure Engagements', weight: 2 },
+          { id: 'pressingEngagements', label: 'Pressing Engagements', weight: 1 },
+          { id: 'forceBackward', label: 'Force Backward per 30 OTIP', weight: 1 },
+          { id: 'regains', label: 'Regains per 30 OTIP', weight: 1 }
+        ]
+      }
+    ]
+  },
+
+  'direct_striker': {
+    name: 'Direct Striker',
+    emoji: '⚡',
+    sections: [
+      {
+        name: 'Physical Metrics',
+        weight: 3,
+        metrics: [
+          { id: 'maxSpeed', label: 'Max Speed', weight: 2 },
+          { id: 'maxSpeedTop5', label: 'Max Speed Top 5', weight: 2 },
+          { id: 'timeToSprintTop3', label: 'Time to Sprint Top 3', weight: 1 },
+          { id: 'timeToHsrTop3', label: 'Time to HSR Top 3', weight: 1 },
+          { id: 'explosiveAccelSprint', label: 'Explosive Acceleration to Sprint (P90)', weight: 2 },
+          { id: 'explosiveAccelHsr', label: 'Explosive Acceleration to HSR (P90)', weight: 2 },
+          { id: 'sprintDistanceTIP', label: 'Sprint Distance per 90min (TIP)', weight: 1 },
+          { id: 'sprintDistanceOTIP', label: 'Sprint Distance per 90min (OTIP)', weight: 1 },
+          { id: 'TimeToSprintPostCod', label: 'Time to Sprint Post Cod', weight: 1 },
+          { id: 'TimeToHsrPostCod', label: 'Time to HSR Post Cod', weight: 1 },
+          { id: 'TimeTo505(90)', label: 'Time to 505 (90)', weight: 1 },
+          { id: 'TimeTo505(180)', label: 'Time to 505 (180)', weight: 1 }
+        ]
+      },
+      {
+        name: 'Movement',
+        weight: 4,
+        metrics: [
+          { id: 'dangerousRuns', label: 'Dangerous Runs', weight: 2 },
+          { id: 'pullingHalfSpace', label: 'Pulling Half Space', weight: 1 },
+          { id: 'runsAhead', label: 'Runs Ahead', weight: 2 },
+          { id: 'runsAheadThreat', label: 'Runs Ahead Threat', weight: 1 },
+          { id: 'runsInBehind', label: 'Runs in Behind', weight: 2 },
+          { id: 'runsInBehindThreat', label: 'Runs in Behind Threat', weight: 1 },
+          { id: 'runsLeadingToShot', label: 'Runs Leading to Shot', weight: 2 },
+          { id: 'crossReceiverRuns', label: 'Cross Receiver Runs', weight: 2 },
+          { id: 'crossReceiverRunsThreat', label: 'Cross Receiver Runs Threat', weight: 1 }
+        ]
+      },
+      {
+        name: 'Passing Metrics',
+        weight: 1,
+        metrics: [
+          { id: 'passCompletionPullingWide', label: 'Pass Completion Pulling Wide', weight: 1 },
+          { id: 'passCompletionComingShort', label: 'Pass Completion Coming Short', weight: 1 },
+          { id: 'passCompletionRunsAhead', label: 'Pass Completion Runs Ahead', weight: 1 },
+          { id: 'passAttemptsToRuns', label: 'Pass Attempts to Player Making a Run', weight: 2 },
+          { id: 'passCompletionToRuns', label: 'Pass Completion to Player Making a Run', weight: 1 }
         ]
       },
       {
@@ -534,142 +720,15 @@ export const PROFILES: Record<string, Profile> = {
       },
       {
         name: 'Defensive Actions',
-        weight: 2,
-        metrics: [
-          { id: 'onBallEngagementsOTIP', label: 'On-Ball Engagements OTIP', weight: 2 },
-          { id: 'counterPressingEngagements', label: 'Counter Pressing Engagements', weight: 1 },
-          { id: 'pressingEngagements', label: 'Pressing Engagements', weight: 1 },
-          { id: 'pressureEngagements', label: 'Pressure Engagements', weight: 1 },
-          { id: 'forceBackward', label: 'Force Backward per 30 OTIP', weight: 1 },
-          { id: 'regains', label: 'Regains per 30 OTIP', weight: 1 },
-        ]
-      }
-    ]
-  },
-
-  'inverted_winger': {
-    name: 'Inverted Winger',
-    emoji: '🎯',
-    sections: [
-      {
-        name: 'Physical Metrics',
-        weight: 2,
-        metrics: [
-          { id: 'maxSpeed', label: 'Max Speed', weight: 1 },
-          { id: 'maxSpeedTop5', label: 'Max Speed Top 5', weight: 1 },
-          { id: 'explosiveAccelSprint', label: 'Explosive Acceleration to Sprint (P90)', weight: 1 },
-          { id: 'explosiveAccelHsr', label: 'Explosive Acceleration to HSR (P90)', weight: 1 },
-          { id: 'sprintCount', label: 'Sprint Count', weight: 2 },
-          { id: 'HiDistance', label: 'High Intensity Distance per 90min', weight: 1 }
-        ]
-      },
-      {
-        name: 'Movement',
-        weight: 2,
-        metrics: [
-          { id: 'halfSpaceRuns', label: 'Half Space Runs', weight: 2 },
-          { id: 'halfSpaceRunsThreat', label: 'Half Space Runs Threat', weight: 1 },
-          { id: 'runsInBehind', label: 'Runs in Behind', weight: 1 },
-          { id: 'runsInBehindThreat', label: 'Runs in Behind Threat', weight: 1 },
-          { id: 'runsAhead', label: 'Runs Ahead', weight: 1 },
-          { id: 'runsAheadThreat', label: 'Runs Ahead Threat', weight: 1 }
-        ]
-      },
-      {
-        name: 'Passing Metrics',
-        weight: 3,
-        metrics: [
-          { id: 'passAttemptsToRuns', label: 'Pass Attempts to Player Making a Run', weight: 2 },
-          { id: 'passCompletionToRuns', label: 'Pass Completion to Player Making a Run', weight: 1 },
-          { id: 'passAttemptsToHalfSpace', label: 'Pass Attempts to Half Space', weight: 2 },
-          { id: 'passCompletionToHalfSpace', label: 'Pass Completion to Half Space', weight: 1 },
-          { id: 'passAttemptsRunsInBehind', label: 'Pass Attempts Runs In Behind', weight: 2 },
-          { id: 'passCompletionRunsInBehind', label: 'Pass Completion Runs In Behind', weight: 1 }
-        ]
-      },
-      {
-        name: 'Pressure Handling',
-        weight: 2,
-        metrics: [
-          { id: 'ballRetentionHigh', label: 'Ball Retention Under High Pressure', weight: 2 },
-          { id: 'passCompletionHigh', label: 'Pass Completion Under High Pressure', weight: 2 },
-          { id: 'ballRetentionMedium', label: 'Ball Retention Under Medium Pressure', weight: 1 },
-          { id: 'passCompletionMedium', label: 'Pass Completion Under Medium Pressure', weight: 1 },
-          { id: 'dangerousPassHigh', label: 'Dangerous Pass Completion Under High Pressure', weight: 2 },
-          { id: 'difficultPassHigh', label: 'Difficult Pass Completion Under High Pressure', weight: 2 }
-        ]
-      },
-      {
-        name: 'Defensive Actions',
         weight: 1,
         metrics: [
           { id: 'onBallEngagementsOTIP', label: 'On-Ball Engagements OTIP', weight: 1 },
+          { id: 'recoveryPressingEngagements', label: 'Recovery Pressing Engagements', weight: 1 },
           { id: 'counterPressingEngagements', label: 'Counter Pressing Engagements', weight: 2 },
-          { id: 'pressingEngagements', label: 'Pressing Engagements', weight: 2 },
           { id: 'pressureEngagements', label: 'Pressure Engagements', weight: 2 },
-          { id: 'forceBackward', label: 'Force Backward per 30 OTIP', weight: 1 },
-          { id: 'regains', label: 'Regains per 30 OTIP', weight: 1 },
-        ]
-      }
-    ]
-  },
-
-  'direct_striker': {
-    name: 'Direct Striker',
-    emoji: '🎯',
-    sections: [
-      {
-        name: 'Physical Metrics',
-        weight: 3,
-        metrics: [
-          { id: 'maxSpeed', label: 'Max Speed', weight: 2 },
-          { id: 'maxSpeedTop5', label: 'Max Speed Top 5', weight: 2 },
-          { id: 'timeToSprintTop3', label: 'Time to Sprint Top 3', weight: 1 },
-          { id: 'timeToHsrTop3', label: 'Time to HSR Top 3', weight: 1 },
-          { id: 'explosiveAccelSprint', label: 'Explosive Acceleration to Sprint (P90)', weight: 1 },
-          { id: 'explosiveAccelHsr', label: 'Explosive Acceleration to HSR (P90)', weight: 1 },
-          { id: 'sprintCount', label: 'Sprint Count', weight: 2 }
-        ]
-      },
-      {
-        name: 'Movement',
-        weight: 3,
-        metrics: [
-          { id: 'runsInBehind', label: 'Runs in Behind', weight: 2 },
-          { id: 'runsInBehindThreat', label: 'Runs in Behind Threat', weight: 2 },
-          { id: 'pullingWideRuns', label: 'Pulling Wide Runs', weight: 1 },
-          { id: 'pullingWideRunsThreat', label: 'Pulling Wide Runs Threat', weight: 1 },
-          { id: 'halfSpaceRuns', label: 'Half Space Runs', weight: 1 },
-          { id: 'halfSpaceRunsThreat', label: 'Half Space Runs Threat', weight: 1 }
-        ]
-      },
-      {
-        name: 'Passing Metrics',
-        weight: 1,
-        metrics: [
-          { id: 'passAttemptsToRuns', label: 'Pass Attempts to Player Making a Run', weight: 1 },
-          { id: 'passCompletionToRuns', label: 'Pass Completion to Player Making a Run', weight: 1 },
-          { id: 'passAttemptsRunsAhead', label: 'Pass Attempts Runs Ahead', weight: 1 },
-          { id: 'passCompletionRunsAhead', label: 'Pass Completion Runs Ahead', weight: 1 }
-        ]
-      },
-      {
-        name: 'Pressure Handling',
-        weight: 1,
-        metrics: [
-          { id: 'ballRetentionHigh', label: 'Ball Retention Under High Pressure', weight: 1 },
-          { id: 'passCompletionHigh', label: 'Pass Completion Under High Pressure', weight: 1 },
-          { id: 'ballRetentionMedium', label: 'Ball Retention Under Medium Pressure', weight: 1 },
-          { id: 'passCompletionMedium', label: 'Pass Completion Under Medium Pressure', weight: 1 }
-        ]
-      },
-      {
-        name: 'Defensive Actions',
-        weight: 2,
-        metrics: [
-          { id: 'counterPressingEngagements', label: 'Counter Pressing Engagements', weight: 2 },
           { id: 'pressingEngagements', label: 'Pressing Engagements', weight: 2 },
-          { id: 'pressureEngagements', label: 'Pressure Engagements', weight: 2 }
+          { id: 'forceBackward', label: 'Force Backward per 30 OTIP', weight: 2 },
+          { id: 'regains', label: 'Regains per 30 OTIP', weight: 1 }
         ]
       }
     ]
@@ -677,7 +736,6 @@ export const PROFILES: Record<string, Profile> = {
 
   'second_striker': {
     name: 'Second Striker',
-    emoji: '⚡',
     sections: [
       {
         name: 'Physical Metrics',
@@ -687,17 +745,20 @@ export const PROFILES: Record<string, Profile> = {
           { id: 'maxSpeedTop5', label: 'Max Speed Top 5', weight: 1 },
           { id: 'explosiveAccelSprint', label: 'Explosive Acceleration to Sprint (P90)', weight: 1 },
           { id: 'explosiveAccelHsr', label: 'Explosive Acceleration to HSR (P90)', weight: 1 },
-          { id: 'sprintCount', label: 'Sprint Count', weight: 2 },
-          { id: 'HiDistance', label: 'High Intensity Distance per 90min', weight: 1 }
+          { id: 'sprintCount', label: 'Sprint Count', weight: 1 },
+          { id: 'TimeToSprintPostCod', label: 'Time to Sprint Post Cod', weight: 1 },
+          { id: 'TimeToHsrPostCod', label: 'Time to HSR Post Cod', weight: 1 },
+          { id: 'TimeTo505(90)', label: 'Time to 505 (90)', weight: 1 },
+          { id: 'TimeTo505(180)', label: 'Time to 505 (180)', weight: 1 }
         ]
       },
       {
         name: 'Movement',
-        weight: 2,
+        weight: 3,
         metrics: [
-          { id: 'droppingOffRuns', label: 'Dropping Off Runs', weight: 2 },
-          { id: 'halfSpaceRuns', label: 'Half Space Runs', weight: 2 },
-          { id: 'halfSpaceRunsThreat', label: 'Half Space Runs Threat', weight: 1 },
+          { id: 'comingShort', label: 'Coming Short', weight: 2 },
+          { id: 'pullingHalfSpace', label: 'Pulling Half Space', weight: 2 },
+          { id: 'pullingWideRuns', label: 'Pulling Wide Runs', weight: 2 },
           { id: 'runsInBehind', label: 'Runs in Behind', weight: 1 },
           { id: 'runsInBehindThreat', label: 'Runs in Behind Threat', weight: 1 },
           { id: 'runsAhead', label: 'Runs Ahead', weight: 1 },
@@ -730,7 +791,7 @@ export const PROFILES: Record<string, Profile> = {
       },
       {
         name: 'Defensive Actions',
-        weight: 2,
+        weight: 1,
         metrics: [
           { id: 'onBallEngagementsOTIP', label: 'On-Ball Engagements OTIP', weight: 1 },
           { id: 'recoveryPressingEngagements', label: 'Recovery Pressing Engagements', weight: 1 },
@@ -738,7 +799,7 @@ export const PROFILES: Record<string, Profile> = {
           { id: 'pressureEngagements', label: 'Pressure Engagements', weight: 2 },
           { id: 'pressingEngagements', label: 'Pressing Engagements', weight: 2 },
           { id: 'forceBackward', label: 'Force Backward per 30 OTIP', weight: 2 },
-          { id: 'regains', label: 'Regains per 30 OTIP', weight: 1 },
+          { id: 'regains', label: 'Regains per 30 OTIP', weight: 1 }
         ]
       }
     ]

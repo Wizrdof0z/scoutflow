@@ -13,6 +13,7 @@ import { getLiveScoutingCategory, UserPermissions } from '@/types'
 import { ArrowLeft, Calendar, MapPin, Users, TrendingUp, Edit2, Save, X, Upload, FileText, Download, Trash2, Calculator } from 'lucide-react'
 import type { PlayerRating, Report, ListCategory, SubProfile, PositionProfile } from '@/types'
 import { useAuthStore } from '@/store'
+import { supabase } from '@/lib/supabase'
 
 export default function PlayerProfilePage() {
   const { playerID } = useParams<{ playerID: string }>()
@@ -393,15 +394,34 @@ export default function PlayerProfilePage() {
 
     setUploadingReport(true)
     try {
-      // In a real app, you would upload to cloud storage (Supabase Storage, S3, etc.)
-      // For now, we'll create a mock file URL
-      const fileUrl = `https://storage.example.com/reports/${file.name}`
+      // Upload file to Supabase Storage
+      const fileExt = file.name.split('.').pop()
+      const fileName = `${playerID}_${Date.now()}.${fileExt}`
+      const filePath = `${fileName}`
+
+      const { data: uploadData, error: uploadError } = await supabase.storage
+        .from('player-reports')
+        .upload(filePath, file, {
+          cacheControl: '3600',
+          upsert: false,
+          contentType: file.type
+        })
+
+      if (uploadError) {
+        console.error('Storage upload error:', uploadError)
+        throw new Error('Failed to upload file to storage')
+      }
+
+      // Get public URL
+      const { data: { publicUrl } } = supabase.storage
+        .from('player-reports')
+        .getPublicUrl(filePath)
       
       await addReport({
         playerID,
         seasonID: selectedSeason.seasonID,
         fileName: file.name,
-        fileUrl,
+        fileUrl: publicUrl,
         fileSize: file.size,
         mimeType: file.type,
         uploadedBy: user.userID,
@@ -587,7 +607,23 @@ export default function PlayerProfilePage() {
         <CardHeader>
           <div className="flex items-start justify-between">
             <div className="space-y-2">
-              <CardTitle className="text-4xl">{player.name}</CardTitle>
+              <div className="flex items-center space-x-3">
+                <CardTitle className="text-4xl">{player.name}</CardTitle>
+                {/* Report Download */}
+                {reports.length > 0 ? (
+                  <a 
+                    href={reports[0].fileUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-1 text-sm text-primary hover:text-primary/80 transition-colors"
+                  >
+                    <Download className="h-4 w-4" />
+                    <span>Download Report</span>
+                  </a>
+                ) : (
+                  <span className="text-sm text-muted-foreground italic">No report available</span>
+                )}
+              </div>
               <div className="flex items-center space-x-4 text-muted-foreground">
                 <span className="flex items-center space-x-1">
                   <Calendar className="h-4 w-4" />

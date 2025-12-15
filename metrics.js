@@ -51,6 +51,10 @@ const PROFILES = {
                     { id: 'explosiveAccelHsr', label: 'Explosive Acceleration to HSR (P90)', weight: 1 },
                     { id: 'sprintCount', label: 'Sprint Count', weight: 2 },
                     { id: 'HiDistance', label: 'High Intensity Distance per 90min', weight: 1 },
+                    { id: 'TimeToSprintPostCod', label: 'Time to Sprint Post Cod', weight: 1 },
+                    { id: 'TimeToHsrPostCod', label: 'Time to HSR Post Cod', weight: 1 ,},
+                    { id: 'TimeTo505(90)', label: 'Time to 505 (90)', weight: 1  },
+                    { id: 'TimeTo505(180)', label: 'Time to 505 (180)', weight: 1  },
                 ]
             },
             {
@@ -123,7 +127,11 @@ const PROFILES = {
                     { id: 'highAccelCount', label: 'High Acceleration Count', weight: 1 },
                     { id: 'explosiveAccelSprint', label: 'Explosive Acceleration to Sprint (P90)', weight: 1 },
                     { id: 'explosiveAccelHsr', label: 'Explosive Acceleration to HSR (P90)', weight: 1 },
-                    { id: 'sprintCount', label: 'Sprint Count', weight: 2 }
+                    { id: 'sprintCount', label: 'Sprint Count', weight: 2 },
+                    { id: 'TimeToSprintPostCod', label: 'Time to Sprint Post Cod', weight: 1 },
+                    { id: 'TimeToHsrPostCod', label: 'Time to HSR Post Cod', weight: 1 ,},
+                    { id: 'TimeTo505(90)', label: 'Time to 505 (90)', weight: 1  },
+                    { id: 'TimeTo505(180)', label: 'Time to 505 (180)', weight: 1  },
                 ]
             },
             {
@@ -197,6 +205,10 @@ const PROFILES = {
                     { id: 'timeToHsrTop3', label: 'Time to HSR Top 3', weight: 1 },
                     { id: 'highAccelCount', label: 'High Acceleration Count', weight: 2 },
                     { id: 'highDecelCount', label: 'High Deceleration Count', weight: 2 },
+                    { id: 'TimeToSprintPostCod', label: 'Time to Sprint Post Cod', weight: 1 },
+                    { id: 'TimeToHsrPostCod', label: 'Time to HSR Post Cod', weight: 1 ,},
+                    { id: 'TimeTo505(90)', label: 'Time to 505 (90)', weight: 1  },
+                    { id: 'TimeTo505(180)', label: 'Time to 505 (180)', weight: 1  },
                 ]
             },
             {
@@ -257,7 +269,11 @@ const PROFILES = {
                     { id: 'maxSpeedTop5', label: 'Max Speed Top 5', weight: 1 },
                     { id: 'mediumAccelCount', label: 'Medium Acceleration Count', weight: 1 },
                     { id: 'highAccelCount', label: 'High Acceleration Count', weight: 1 },
-                    { id: 'sprintCount', label: 'Sprint Count', weight: 2 }
+                    { id: 'sprintCount', label: 'Sprint Count', weight: 2 },
+                    { id: 'TimeToSprintPostCod', label: 'Time to Sprint Post Cod', weight: 1 },
+                    { id: 'TimeToHsrPostCod', label: 'Time to HSR Post Cod', weight: 1 ,},
+                    { id: 'TimeTo505(90)', label: 'Time to 505 (90)', weight: 1  },
+                    { id: 'TimeTo505(180)', label: 'Time to 505 (180)', weight: 1  },
                 ]
             },
             {
@@ -318,7 +334,11 @@ const PROFILES = {
                     { id: 'maxSpeedTop5', label: 'Max Speed Top 5', weight: 1 },
                     { id: 'timeToSprintTop3', label: 'Time to Sprint Top 3', weight: 1 },
                     { id: 'timeToHsrTop3', label: 'Time to HSR Top 3', weight: 1 },
-                    { id: 'sprintCount', label: 'Sprint Count', weight: 2 }
+                    { id: 'sprintCount', label: 'Sprint Count', weight: 2 },
+                    { id: 'TimeToSprintPostCod', label: 'Time to Sprint Post Cod', weight: 1 },
+                    { id: 'TimeToHsrPostCod', label: 'Time to HSR Post Cod', weight: 1 ,},
+                    { id: 'TimeTo505(90)', label: 'Time to 505 (90)', weight: 1  },
+                    { id: 'TimeTo505(180)', label: 'Time to 505 (180)', weight: 1  },
                 ]
             },
             {
@@ -389,7 +409,9 @@ const PROFILES = {
                     { id: 'explosiveAccelSprint', label: 'Explosive Acceleration to Sprint (P90)', weight: 1 },
                     { id: 'explosiveAccelHsr', label: 'Explosive Acceleration to HSR (P90)', weight: 1 },
                     { id: 'metersPerMinuteTIP', label: 'Meters Per Minute per 90min (TIP)', weight: 2 },
-                    { id: 'metersPerMinuteOTIP', label: 'Meters Per Minute per 90min (OTIP)', weight: 2 }
+                    { id: 'metersPerMinuteOTIP', label: 'Meters Per Minute per 90min (OTIP)', weight: 2 },
+                    { id: 'TimeToSprintPostCod', label: 'Time to Sprint Post Cod', weight: 1 },
+                    { id: 'TimeToHsrPostCod', label: 'Time to HSR Post Cod', weight: 1 ,},
                 ]
             },
             {
@@ -465,7 +487,11 @@ const PROFILES = {
                     { id: 'explosiveAccelSprint', label: 'Explosive Acceleration to Sprint (P90)', weight: 2 },
                     { id: 'explosiveAccelHsr', label: 'Explosive Acceleration to HSR (P90)', weight: 2 },
                     { id: 'HIDistance', label: 'High Intensity Distance per 90min', weight: 1 },
-                    { id: 'sprintCount', label: 'Sprint Count', weight: 2 }
+                    { id: 'sprintCount', label: 'Sprint Count', weight: 2 },
+                    { id: 'TimeToSprintPostCod', label: 'Time to Sprint Post Cod', weight: 2 },
+                    { id: 'TimeToHsrPostCod', label: 'Time to HSR Post Cod', weight: 2 },
+                    { id: 'TimeTo505(90)', label: 'Time to 505 (90)', weight: 1  },
+                    { id: 'TimeTo505(180)', label: 'Time to 505 (180)', weight: 1  },
                 ]
             },
             {
@@ -537,7 +563,9 @@ const PROFILES = {
                     { id: 'timeToHsrTop3', label: 'Time to HSR Top 3', weight: 1 },
                     { id: 'explosiveAccelSprint', label: 'Explosive Acceleration to Sprint (P90)', weight: 1 },
                     { id: 'explosiveAccelHsr', label: 'Explosive Acceleration to HSR (P90)', weight: 1 },
-                    { id: 'sprintCount', label: 'Sprint Count', weight: 2 }
+                    { id: 'sprintCount', label: 'Sprint Count', weight: 2 },
+                    { id: 'TimeTo505(90)', label: 'Time to 505 (90)', weight: 1  },
+                    { id: 'TimeTo505(180)', label: 'Time to 505 (180)', weight: 1  },
                 ]
             },
             {
@@ -609,8 +637,12 @@ const PROFILES = {
                     { id: 'timeToHsrTop3', label: 'Time to HSR Top 3', weight: 1 },
                     { id: 'explosiveAccelSprint', label: 'Explosive Acceleration to Sprint (P90)', weight: 2 },
                     { id: 'explosiveAccelHsr', label: 'Explosive Acceleration to HSR (P90)', weight: 2 },
-                    { id: 'sprintDistanceTIP)', label: 'Sprint Distance per 90min (TIP)', weight: 1 },
-                    { id: 'sprintDistanceOTIP)', label: 'Sprint Distance per 90min (OTIP)', weight: 1 }
+                    { id: 'sprintDistanceTIP', label: 'Sprint Distance per 90min (TIP)', weight: 1 },
+                    { id: 'sprintDistanceOTIP', label: 'Sprint Distance per 90min (OTIP)', weight: 1 },
+                    { id: 'TimeToSprintPostCod', label: 'Time to Sprint Post Cod', weight: 1 },
+                    { id: 'TimeToHsrPostCod', label: 'Time to HSR Post Cod', weight: 1},
+                    { id: 'TimeTo505(90)', label: 'Time to 505 (90)', weight: 1  },
+                    { id: 'TimeTo505(180)', label: 'Time to 505 (180)', weight: 1  },
                 ]
             },
             {
@@ -678,7 +710,12 @@ const PROFILES = {
                     { id: 'maxSpeedTop5', label: 'Max Speed Top 5', weight: 1 },
                     { id: 'explosiveAccelSprint', label: 'Explosive Acceleration to Sprint (P90)', weight: 1 },
                     { id: 'explosiveAccelHsr', label: 'Explosive Acceleration to HSR (P90)', weight: 1 },
-                    { id: 'sprintCount', label: 'Sprint Count', weight: 1 }
+                    { id: 'sprintCount', label: 'Sprint Count', weight: 1 },
+                    { id: 'TimeToSprintPostCod', label: 'Time to Sprint Post Cod', weight: 1 },
+                    { id: 'TimeToHsrPostCod', label: 'Time to HSR Post Cod', weight: 1},
+                    { id: 'TimeTo505(90)', label: 'Time to 505 (90)', weight: 1  },
+                    { id: 'TimeTo505(180)', label: 'Time to 505 (180)', weight: 1  },
+
                 ]
             },
             {
